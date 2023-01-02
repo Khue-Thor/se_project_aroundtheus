@@ -23,3 +23,6 @@ Good luck and have fun!
 
 # 3rd commit : 
   - moving the font.css to the fonts folder and create a new folder the the inter fonts.
+
+# 4th commit :
+  - delete the .page selector in normalize.css 
