@@ -18,64 +18,6 @@
   padding: 0;
 }
 
-.card {
-  box-sizing: border-box;
-  max-width: 282px;
-  height: 361px;
-  border-radius: 4%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  justify-content: space-between;
-}
-
-.card__image {
-  max-width: 100%;
-  height: 282px;
-  margin: 0;
-}
-
-.card__description {
-  max-width: 100%;
-  height: 79px;
-  background-color: #ffffff;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  margin: 0;
-  display: flex;
-  align-items: center;
-}
-.card__title {
-  margin: 0;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 1.2;
-  margin-left: 20px;
-}
-
-.card__button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin-left: auto;
-  margin-right: 20px;
-  transition: 0.3s ease-in-out;
-}
-
-.card__like-button {
-  max-width: 21px;
-  max-height: 18px;
-}
-
-.card__button:hover {
-  opacity: 0.5;
-}
-
-
 @media screen and (max-width: 1279px) {
   .cards__list {
     margin: auto;
