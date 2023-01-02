@@ -1,0 +1,95 @@
+.cards {
+  max-width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 0 67px 0;
+}
+
+.card__list {
+  max-width: fit-content;
+  list-style: none;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px 17px;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  box-sizing: border-box;
+  max-width: 282px;
+  height: 361px;
+  border-radius: 4%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+.card__image {
+  max-width: 100%;
+  height: 282px;
+  margin: 0;
+}
+
+.card__description {
+  max-width: 100%;
+  height: 79px;
+  background-color: #ffffff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.card__title {
+  margin: 0;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+  margin-left: 20px;
+}
+
+.card__button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  margin-right: 20px;
+  transition: 0.3s ease-in-out;
+}
+
+.card__like-button {
+  max-width: 21px;
+  max-height: 18px;
+}
+
+.card__button:hover {
+  opacity: 0.5;
+}
+
+
+@media screen and (max-width: 1279px) {
+  .card__list {
+    margin: auto;
+    grid-template-columns: repeat(2, 282px);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .card__list {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 20px;
+    max-width: 282px;
+    margin: 0 auto;
+  }
+}

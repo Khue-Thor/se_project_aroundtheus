@@ -1,0 +1,28 @@
+@import url(../vendor/fonts.css);
+
+.page__content {
+  min-width: 320px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  background-color: #000000;
+  margin: auto;
+  padding: 45px 200px 0px 200px;
+}
+
+@media screen and (max-width: 1279px ) {
+  .page {
+    background-color: #000000;
+  }
+  .page__content {
+    max-width: 880px;
+    padding: 45px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 820px ) {
+  .page__content {
+   max-width: calc(100% - 38px);
+   padding: 28px 0px 0 0px;
+  }
+}
+
