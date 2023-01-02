@@ -1,5 +1,6 @@
 .page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 .page__content {
@@ -7,7 +8,7 @@
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-size: 24px;
   background-color: #000000;
-  margin: auto;
+  margin: 0 auto;
   padding: 45px 200px 0px 200px;
 }
 
