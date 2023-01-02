@@ -19,3 +19,7 @@ This project is made so all the elements are displayed correctly on popular scre
 The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
   
 Good luck and have fun!
+
+
+# 3rd commit : 
+  - moving the font.css to the fonts folder and create a new folder the the inter fonts.
