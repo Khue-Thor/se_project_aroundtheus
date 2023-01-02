@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #000000;
 }
 .page__content {
   min-width: 320px;
@@ -13,9 +14,6 @@
 }
 
 @media screen and (max-width: 1279px ) {
-  .page {
-    background-color: #000000;
-  }
   .page__content {
     max-width: 880px;
     padding: 45px 0 0 0;
