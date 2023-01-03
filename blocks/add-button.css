@@ -1,0 +1,13 @@
+.add-button {
+  max-width: 22px;
+  max-height: 22px;
+  grid-area: add;
+}
+
+
+@media screen and (max-width: 820px ) {
+  .add-button {
+    max-width: 16px;
+    max-height: 16px;
+  }
+}

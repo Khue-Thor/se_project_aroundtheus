@@ -47,6 +47,8 @@
   grid-area: title;
 }
 
+
+
 .profile__edit {
   max-width: 24px;
   height: 24px;
@@ -80,6 +82,22 @@
   margin: 0;
   padding: 0;
   grid-area: description;
+}
+
+.profile__add-button {
+  width: 150px;
+  height: 50px;
+  grid-area: add;
+  margin-left: auto;
+  background: transparent;
+  border: 2px solid #FFFFFF;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1279px ) {
@@ -141,6 +159,11 @@
   .profile__description {
     font-size: 14px;
     text-align: center;
+  }
+
+  .profile__add-button {
+    width: 282px;
+    margin: 0;
   }
 
 

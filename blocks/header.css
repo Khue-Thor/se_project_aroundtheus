@@ -5,11 +5,12 @@
   padding: 0 0 41px 0;
 }
 
-@media screen and (max-width: 820px ) {
+@media screen and (max-width: 8209px ) {
   .header {
     max-width: 100%;
     padding: 0 0 32px 0;
   }
 }
+
 
 
