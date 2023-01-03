@@ -30,4 +30,9 @@ Hi, my name is Khuephamy Phialoung. I am a Practicum student, this project is ca
   - moving the font.css to the fonts folder and create a new folder the the inter fonts.
 
 # 4th commit :
-  - delete the .page selector in normalize.css 
+  - delete the .page selector in normalize.css
+
+# version.5 :
+  - change the opacity : 0.5;
+  - add the button 'type'
+  - put the profile__add-button to profile.css file.
