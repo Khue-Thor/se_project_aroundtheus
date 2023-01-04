@@ -23,7 +23,7 @@ Good luck and have fun!
 Hi, my name is Khuephamy Phialoung. I am a Practicum student, this project is called
  se_project_abouttheus, so it requires us to create the layouts for the webpage according to the designed on Figma. In this project I implemented media queries to make the different layouts depending on the screen size. Grid is one of the most that have been used in this project, I use grid to set the profile and cards to changes it position depend of the screen, so in this situation grid is better and easier to use than using flexbox.
 
- My Git Pages Link: https://khue-thor.github.io/se_project_aroundtheus/
+ My Git Page Link: https://khue-thor.github.io/se_project_aroundtheus/
 
 
 # 3rd commit : 
