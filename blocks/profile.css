@@ -85,7 +85,7 @@
 }
 
 .profile__add-button {
-  max-width: 150px;
+  width: 150px;
   height: 50px;
   grid-area: add;
   margin-left: auto;
@@ -144,7 +144,7 @@
   }
 
   .profile__edit {
-    max-width: 18px;
+    width: 18px;
     height: 18px;
     margin-top: 2px;
     justify-content: center;
@@ -162,7 +162,7 @@
   }
 
   .profile__add-button {
-    max-width: 282px;
+    width: 282px;
     margin: 0;
   }
 

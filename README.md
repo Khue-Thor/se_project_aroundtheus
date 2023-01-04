@@ -36,3 +36,6 @@ Hi, my name is Khuephamy Phialoung. I am a Practicum student, this project is ca
   - change the opacity : 0.5;
   - add the button 'type'
   - put the profile__add-button to profile.css file.
+
+# fix scrolls horizontally:
+  - the .page__content has spicified the min and max width between 1280px - 320px.
