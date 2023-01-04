@@ -11,7 +11,7 @@
 }
 
 .profile__avatar {
-  width: 120px;
+  max-width: 120px;
   height: 120px;
   grid-area: avatar;
   border-radius: 50%;
@@ -85,7 +85,7 @@
 }
 
 .profile__add-button {
-  width: 150px;
+  max-width: 150px;
   height: 50px;
   grid-area: add;
   margin-left: auto;
@@ -125,7 +125,7 @@
 
   .profile__avatar {
     max-width: 127.5px;
-    height: 127.5px;
+    max-height: 127.5px;
   }
   
   .profile__info {
@@ -162,7 +162,7 @@
   }
 
   .profile__add-button {
-    width: 282px;
+    max-width: 282px;
     margin: 0;
   }
 
