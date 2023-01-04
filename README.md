@@ -28,9 +28,9 @@ Hi, my name is Khuephamy Phialoung. I am a Practicum student, this project is ca
 
 # 3rd commit : 
   - moving the font.css to the fonts folder and create a new folder the the inter fonts.
-
+ s
 # 4th commit :
-  - delete the .page selector in normalize.css
+  - delete the .page selector in normalize.css 
 
 # version.5 :
   - change the opacity : 0.5;
