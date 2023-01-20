@@ -90,6 +90,10 @@ modalClose.addEventListener("click", closeProfileModal);
 modalForm.addEventListener('submit', profileEditSubmit);
 
 
+/* ------------------ */
+/*  Loop to add cards */
+/* ------------------ */
+
 initialCards.forEach((cardData) => {
   const cardElement = makeCardElement(cardData);
   cardLists.prepend(cardElement);
