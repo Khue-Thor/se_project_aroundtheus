@@ -39,3 +39,7 @@ Hi, my name is Khuephamy Phialoung. I am a Practicum student, this project is ca
 
 # fix scrolls horizontally:
   - the .page__content has spicified the min and max width between 1280px - 320px.
+
+# make cards via JS and Fix the cards order:
+  - delete the HTML codes for the cards, it's tile and use Javacript to add cards
+  - The card Image will pop up from the bottom to the top in the initialCards.
