@@ -24,8 +24,10 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+/* -----------------*/
+/*     Variables    */
+/* -----------------*/
 
-/* Variables */
 
 const profileEditButton = document.querySelector('.profile__edit');
 const profileEditModal = document.querySelector('.modal');
@@ -35,9 +37,17 @@ const profileDescription = document.querySelector('.profile__description');
 const profileTitleInput = document.querySelector('#profile__title-input');
 const profileDescriptionInput = document.querySelector('#profile__description-input');
 const submitButton = document.querySelector('.modle__form_save');
+const modalForm = document.querySelector('.modal__form');
 
 
-// Functions
+const cardsContainer = document.querySelector('.cards');
+const cardLists = cardsContainer.querySelector('.cards__list');
+
+
+
+/* -----------------*/
+/*    Functions     */
+/* -----------------*/
 
 function openProfileModal() {
   profileEditModal.classList.add("modal__opened");
@@ -46,7 +56,6 @@ function openProfileModal() {
 function closeProfileModal() {
   profileEditModal.classList.remove("modal__opened");
 }
-
 
 function openProfileEditForm() {
   profileTitleInput.value = profileTitle.textContent;
@@ -61,8 +70,27 @@ function profileEditSubmit(e) {
   closeProfileModal();
 }
 
-// Event Listener
 
+function makeCardElement(cardData) {
+  const cardTemplate = cardLists.querySelector('#card__template').content;
+  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+  const cardImageEl = cardElement.querySelector('.card__image');
+  const cardTitleEl = cardElement.querySelector('.card__title');
+  cardImageEl.alt = cardData.name;
+  cardImageEl.src = cardData.link;
+  cardTitleEl.textContent = cardData.name;
+  return cardElement;
+}
+
+/* ---------------- */
+/*  Event Listener  */
+/* -----------------*/
 profileEditButton.addEventListener('click', openProfileEditForm);
 modalClose.addEventListener("click", closeProfileModal);
-submitButton.addEventListener("submit", profileEditSubmit);
+modalForm.addEventListener('submit', profileEditSubmit);
+
+
+initialCards.forEach((cardData) => {
+  const cardElement = makeCardElement(cardData);
+  cardLists.prepend(cardElement);
+});
