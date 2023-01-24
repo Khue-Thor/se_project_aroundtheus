@@ -27,6 +27,9 @@
 }
 .card__title {
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 900;
@@ -38,7 +41,7 @@
 .card__like-button {
   border: none;
   background: transparent url("../images/card__Button.svg") center no-repeat;
-  width: 21px;
+  min-width: 21px;
   height: 18px;
   margin-left: auto;
   margin-right: 20px;
