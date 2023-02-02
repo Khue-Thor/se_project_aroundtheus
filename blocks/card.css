@@ -6,16 +6,17 @@
   flex-direction: column;
   overflow: hidden;
   justify-content: space-between;
+  
 }
 
 .card__image {
   max-width: 282px;
   height: 282px;
   margin: 0;
+  cursor: pointer;
 }
 
 .card__description {
-  max-width: 100%;
   background-color: #ffffff;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -49,8 +50,33 @@
   padding: 0;
   transition: 0.3s ease-in-out;
 }
-
-
 .card__like-button:hover {
   opacity: 0.5;
+}
+
+.card__like-button_toggle {
+  background: url(../images/Active-Like-button.svg);
+}
+
+
+.card__remove-button_container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-end;
+}
+
+.card__remove-button {
+  background: transparent url(../images/trashcan.svg) center no-repeat;
+  width: 18px;
+	height: 20px;
+	cursor: pointer;
+	border: none;
+	position: relative;
+	top: 36px;
+	left: calc(100% - 33px);
+}
+
+.card__remove-button:hover {
+  opacity: 0.6;
 }

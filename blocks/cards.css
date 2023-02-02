@@ -18,6 +18,8 @@
   padding: 0;
 }
 
+
+
 @media screen and (max-width: 1279px) {
   .cards__list {
     margin: auto;

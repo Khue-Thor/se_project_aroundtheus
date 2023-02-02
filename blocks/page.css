@@ -12,7 +12,9 @@
   margin: 0 auto;
   padding: 45px 200px 0px 200px;
   background-color: #000000;
+ 
 }
+
 
 @media screen and (max-width: 1279px ) {
   .page__content {

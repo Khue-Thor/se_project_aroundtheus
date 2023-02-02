@@ -1,26 +1,26 @@
 const initialCards = [
   {
-    name: "Lago di Braies",
+    title: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
   {
-    name: "Vanoise National Park",
+    title: "Vanoise National Park",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   },
   {
-    name: "Latemar",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    title: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
   {
-    name: "Bold Mountains",
+    title: "Bold Mountains",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
   },
   {
-    name: "Lake Louise",
+    title: "Lake Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
   },
   {
-    name: "Yosemite Valley",
+    title: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
 ];
@@ -28,7 +28,7 @@ const initialCards = [
 /*     Variables    */
 /* -----------------*/
 
-
+// sprint4 Variables
 const profileEditButton = document.querySelector('.profile__edit');
 const profileEditModal = document.querySelector('.modal');
 const modalClose = document.querySelector('.modal__close');
@@ -43,51 +43,145 @@ const modalForm = document.querySelector('.modal__form');
 const cardsContainer = document.querySelector('.cards');
 const cardLists = cardsContainer.querySelector('.cards__list');
 
+const cardTemplate = cardLists.querySelector('#card__template').content.firstElementChild;
 
+// sprint5 Variables
 
+const cardAddButton = document.querySelector(".card__add-button");
+const cardAddModal = document.querySelector("#card-add-modal");
+const cardModalCloseBtn = document.querySelector("#card-Add-Modal__close_button");
+
+const cardAddForm = document.querySelector("#card-add-form");
+const cardAddSubmit = document.querySelector("#card-add-submit");
+
+const cardTitle = document.querySelector("#card-title");
+const cardImage = document.querySelector("#card-image");
+
+const cardTitleInput = document.querySelector("#card__title-input");
+const cardImageInput = document.querySelector("#card__link-input");
+
+const modalImage = document.querySelector("#card-modal-image");
+const modalCaption = document.querySelector("#card-modal-caption");
+const modalImageCard = document.querySelector("#modal-image-card");
+const cardImageModalClose = document.querySelector("#card-image-close");
 /* -----------------*/
 /*    Functions     */
 /* -----------------*/
 
-function openProfileModal() {
-  profileEditModal.classList.add("modal__opened");
+function openModal(open) {
+  open.classList.add("modal__opened");
 }
 
-function closeProfileModal() {
-  profileEditModal.classList.remove("modal__opened");
+function closeModal(close) {
+  close.classList.remove("modal__opened");
 }
 
 function openProfileEditForm() {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  openProfileModal();
+  openModal(profileEditModal);
 }
 
 function profileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closeProfileModal();
+  closeModal(profileEditModal);
 }
 
 
-function makeCardElement(cardData) {
-  const cardTemplate = cardLists.querySelector('#card__template').content;
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+// sprint5 function //
+function toggleCardModal() {
+  cardAddModal.classList.toggle("modal__opened");
+}
+function renderCard(cardElement, container) {
+  container.prepend(cardElement);
+}
+
+function toggleLikeBtn() {
+  cardLikeButton.classList.add('card__like-button-toggle')
+}
+
+function handleCardAddSubmit(e) {
+  e.preventDefault();
+  cardTitle.textContent = cardTitleInput.value;
+  cardImage.src = cardImageInput.value;
+  cardImage.alt = cardImageInput.value;
+  closeModal(cardAddModal);
+}
+
+function removeCard(e) {
+  e.target.closest(".card").remove();
+}
+
+
+
+function getCardView(cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.card__image');
   const cardTitle = cardElement.querySelector('.card__title');
-  cardImage.alt = cardData.name;
+  const cardLikeButton = cardElement.querySelector('.card__like-button');
+  const cardRemoveButton = cardElement.querySelector('#card-remove-button');
+
+  cardLikeButton.addEventListener("click", () => {
+    cardLikeButton.classList.toggle("card__like-button_toggle")
+  });
+
+  cardRemoveButton.addEventListener("click", removeCard);
+
+  cardImage.addEventListener("click", () => {
+    handleCardImageModal(cardData);
+  });
+  
+  cardImage.alt = cardData.title;
   cardImage.src = cardData.link;
-  cardTitle.textContent = cardData.name;
+  cardTitle.textContent = cardData.title;
   return cardElement;
+}
+
+function handleCardImageModal(cardData) {
+  modalImageCard.src = cardData.link;
+  modalImageCard.alt = cardData.title;
+  modalCaption.textContent = cardData.title;
+  openModal(modalImage);
 }
 
 /* ---------------- */
 /*  Event Listener  */
 /* -----------------*/
 profileEditButton.addEventListener('click', openProfileEditForm);
-modalClose.addEventListener("click", closeProfileModal);
+modalClose.addEventListener("click", () => {
+  closeModal(profileEditModal)
+});
 modalForm.addEventListener('submit', profileEditSubmit);
+
+
+//   sprint5    //
+
+cardAddButton.addEventListener("click", () => {
+  openModal(cardAddModal);
+});
+
+cardModalCloseBtn.addEventListener("click", () => {
+  closeModal(cardAddModal);
+});
+
+// click to add card
+cardAddForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const title = e.target.title.value;
+  const link = e.target.link.value;
+  const cardView = getCardView({title, link});
+  renderCard(cardView, cardLists);
+  closeModal(cardAddModal);
+  cardAddForm.reset();
+});
+
+cardImageModalClose.addEventListener('click', () => { 
+  closeModal(modalImage);
+});
+
+
 
 
 /* ------------------ */
@@ -95,6 +189,8 @@ modalForm.addEventListener('submit', profileEditSubmit);
 /* ------------------ */
 
 initialCards.forEach((cardData) => {
-  const cardElement = makeCardElement(cardData);
-  cardLists.prepend(cardElement);
+  const cardView = getCardView(cardData);
+  renderCard(cardView, cardLists);
 });
+
+
