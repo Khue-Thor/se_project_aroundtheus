@@ -25,8 +25,7 @@
             <p class="profile__description">Explorer</p>
           </div>
 
-          <button class="profile__add-button card__add-button" type="button">
-            <img src="./images/add-button.svg" alt="add-button" class="add-button">
+          <button class="profile__add-button" id="card__add-button" type="button">
           </button>
           
         </section>
@@ -49,14 +48,12 @@
 
       <div class="modal" id="profile-eidit-modal">
         <div class="modal__container">
-          <button class="modal__close">
-            <img class="modal__close_icon" src="images/Close-icon.svg" alt="close-button">
-          </button>
+          <button class="modal__close"></button>
           <form class="modal__form">
-            <h2 class="modal__form_heading">Edit Profile</h2>
-            <fieldset class="modal__form__fieldset">
+            <h2 class="modal__heading">Edit Profile</h2>
+            <fieldset class="modal__form-fieldset">
               <input 
-                class="modal__form_input"
+                class="modal__form-input"
                 type="text"
                 placeholder="Name"
                 id="profile__title-input"
@@ -64,9 +61,9 @@
               >
             </fieldset>
 
-            <fieldset class="modal__form__fieldset">
+            <fieldset class="modal__form-fieldset">
               <input 
-                class="modal__form_input"
+                class="modal__form-input"
                 type="text"
                 placeholder="Description"
                 id="profile__description-input"
@@ -74,8 +71,8 @@
               >
             </fieldset>
 
-            <fieldset class="modal__form__fieldset">
-              <button type="submit" class="modal__form_save" id="card-modal-submit">Save</button>
+            <fieldset class="modal__form-fieldset">
+              <button type="submit" class="modal__form-save" id="card-modal-submit">Save</button>
             </fieldset>
 
           </form>
@@ -84,14 +81,12 @@
 
       <div class="modal" id="card-add-modal">
         <div class="modal__container">
-          <button class="modal__close" id="card-Add-Modal__close_button">
-           <img class="modal__close_icon" src="images/Close-icon.svg" alt="close-button">
-          </button>
+          <button class="modal__close" id="card-Add-Modal__close_button"></button>
           <form class="modal__form" id="card-add-form">
-            <h2 class="modal__form_heading">New Place</h2>
-            <fieldset class="modal__form__fieldset">
+            <h2 class="modal__heading">New Place</h2>
+            <fieldset class="modal__form-fieldset">
               <input 
-                class="modal__form_input"
+                class="modal__form-input"
                 type="text"
                 placeholder="Title"
                 name="title"
@@ -100,9 +95,9 @@
               >
             </fieldset>
 
-            <fieldset class="modal__form__fieldset">
+            <fieldset class="modal__form-fieldset">
               <input 
-                class="modal__form_input"
+                class="modal__form-input"
                 type="text"
                 placeholder="Image link"
                 id="card__link-input"
@@ -111,8 +106,8 @@
               >
             </fieldset>
 
-            <fieldset class="modal__form__fieldset">
-              <button type="submit" class="modal__form_save" id="card-add-submit">Save</button>
+            <fieldset class="modal__form-fieldset">
+              <button type="submit" class="modal__form-save" id="card-add-submit">Save</button>
             </fieldset>
 
           </form>

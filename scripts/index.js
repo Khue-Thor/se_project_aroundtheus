@@ -47,7 +47,7 @@ const cardTemplate = cardLists.querySelector('#card__template').content.firstEle
 
 // sprint5 Variables
 
-const cardAddButton = document.querySelector(".card__add-button");
+const cardAddButton = document.querySelector("#card__add-button");
 const cardAddModal = document.querySelector("#card-add-modal");
 const cardModalCloseBtn = document.querySelector("#card-Add-Modal__close_button");
 

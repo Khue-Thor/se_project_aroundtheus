@@ -85,11 +85,11 @@
 }
 
 .profile__add-button {
+  background: transparent url('/images/add-button.svg') center no-repeat;
   width: 150px;
   height: 50px;
   grid-area: add;
   margin-left: auto;
-  background: transparent;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
   cursor: pointer;
