@@ -16,9 +16,9 @@
 
 .modal__container {
   position: relative;
-  top:150px;
   margin: auto;
   width: 430px;
+  height: 330px;
   border-radius: 10px;
   background: #ffffff;
   padding: 0 0 36.51px 0;
@@ -27,7 +27,7 @@
 
 .modal__opened {
   display: flex;
-	align-items: center;
+  align-items: center;
 	justify-content: center;
 	visibility: visible;
 	pointer-events: all;
