@@ -10,8 +10,9 @@
 }
 
 .card__image {
-  max-width: 282px;
+  width: 282px;
   height: 282px;
+  border-radius: 4%;
   margin: 0;
   cursor: pointer;
 }
