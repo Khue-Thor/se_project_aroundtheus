@@ -1,13 +1,13 @@
 .page {
-  background-color: #000000;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
-  font-size: 24px;
+  background-color: #000000;
 }
 .page__content {
   max-width: 1280px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 24px;
   margin: 0 auto;
   padding: 45px 200px 0px 200px;
   background-color: #000000;
