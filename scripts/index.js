@@ -31,13 +31,13 @@ const initialCards = [
 // sprint4 Variables
 const profileEditButton = document.querySelector('.profile__edit');
 const profileEditModal = document.querySelector('.modal');
-const modalClose = document.querySelector('.modal__close');
+const profileModalCloseBtn = document.querySelector('.modal__close');
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
 const profileTitleInput = document.querySelector('#profile__title-input');
 const profileDescriptionInput = document.querySelector('#profile__description-input');
 const submitButton = document.querySelector('.modle__form_save');
-const modalForm = document.querySelector('.modal__form');
+const profileForm = document.querySelector('.modal__form');
 
 
 const cardsContainer = document.querySelector('.cards');
@@ -140,10 +140,10 @@ function handleCardImageModal(cardData) {
 /*  Event Listener  */
 /* -----------------*/
 profileEditButton.addEventListener('click', openProfileEditForm);
-modalClose.addEventListener("click", () => {
+profileModalCloseBtn.addEventListener("click", () => {
   closeModal(profileEditModal)
 });
-modalForm.addEventListener('submit', handleProfileEditSubmit);
+profileForm.addEventListener('submit', handleProfileEditSubmit);
 
 
 //   sprint5    //
