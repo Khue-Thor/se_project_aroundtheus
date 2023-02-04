@@ -68,12 +68,12 @@ const cardImageModalClose = document.querySelector("#card-image-close");
 /*    Functions     */
 /* -----------------*/
 
-function openModal(open) {
-  open.classList.add("modal__opened");
+function openModal(popup) {
+  popup.classList.add("modal_opened");
 }
 
-function closeModal(close) {
-  close.classList.remove("modal__opened");
+function closeModal(popup) {
+  popup.classList.remove("modal_opened");
 }
 
 function openProfileEditForm() {
@@ -82,7 +82,7 @@ function openProfileEditForm() {
   openModal(profileEditModal);
 }
 
-function profileEditSubmit(e) {
+function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
@@ -91,23 +91,13 @@ function profileEditSubmit(e) {
 
 
 // sprint5 function //
-function toggleCardModal() {
-  cardAddModal.classList.toggle("modal__opened");
-}
+
 function renderCard(cardElement, container) {
   container.prepend(cardElement);
 }
 
 function toggleLikeBtn() {
   cardLikeButton.classList.add('card__like-button-toggle')
-}
-
-function handleCardAddSubmit(e) {
-  e.preventDefault();
-  cardTitle.textContent = cardTitleInput.value;
-  cardImage.src = cardImageInput.value;
-  cardImage.alt = cardImageInput.value;
-  closeModal(cardAddModal);
 }
 
 function removeCard(e) {
@@ -153,7 +143,7 @@ profileEditButton.addEventListener('click', openProfileEditForm);
 modalClose.addEventListener("click", () => {
   closeModal(profileEditModal)
 });
-modalForm.addEventListener('submit', profileEditSubmit);
+modalForm.addEventListener('submit', handleProfileEditSubmit);
 
 
 //   sprint5    //
