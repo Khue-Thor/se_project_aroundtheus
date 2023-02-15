@@ -70,10 +70,14 @@ const cardImageModalClose = document.querySelector("#card-image-close");
 
 function openModal(popup) {
   popup.classList.add("modal_opened");
+  document.addEventListener("keydown", closeByEscape);
+  document.addEventListener("mousedown", handleOverlay);
 }
 
 function closeModal(popup) {
   popup.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeByEscape);
+  document.removeEventListener("mousedown", handleOverlay);
 }
 
 function openProfileEditForm() {
@@ -136,6 +140,19 @@ function handleCardImageModal(cardData) {
   openModal(modalImage);
 }
 
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closeModal(openedModal);
+  }
+}
+
+function handleOverlay(evt) {
+  if (evt.target.classList.contains("modal_opened")) {
+    closeModal(evt.target);
+  }
+}
+
 /* ---------------- */
 /*  Event Listener  */
 /* -----------------*/
@@ -183,4 +200,7 @@ initialCards.forEach((cardData) => {
   renderCard(cardView, cardLists);
 });
 
+/* -------------------------------------- */
+/*                                        */
+/* -------------------------------------- */
 

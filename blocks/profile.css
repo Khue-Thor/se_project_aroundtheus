@@ -1,5 +1,9 @@
+
+
 .profile {
-  max-width: 880px;
+  box-sizing: border-box;
+ 
+  max-width: 800px;
   display: grid;
   grid-template-columns: 120px 30px 1fr 1fr 1fr;
   grid-template-rows: 1fr;
@@ -12,10 +16,11 @@
 
 .profile__avatar {
   max-width: 120px;
-  height: 120px;
+  max-height: 120px;
   grid-area: avatar;
   border-radius: 50%;
   margin: 0;
+  
 }
 
 .profile__info {
@@ -44,6 +49,7 @@
   font-size: 42px;
   line-height: 1.14;
   margin: 0;
+  padding: 0;
   grid-area: title;
 }
 
@@ -51,13 +57,13 @@
 
 .profile__edit {
   max-width: 24px;
-  height: 24px;
+  max-height: 24px;
   background: transparent;
   grid-area: edit;
   border: 1px solid #FFFFFF;
   display: flex;
   cursor: pointer;
-
+  box-sizing: border-box;
   transition: 0.3s ease-in-out;
 }
 .profile__edit-button {
@@ -111,7 +117,7 @@
   .profile {
     max-width: 282px;
     padding: 42px 0 0 0;
-    margin: auto;
+    margin: 0 auto;
     margin-bottom: 36px;
     grid-template-columns:  1fr 1fr 1fr 1fr;
     grid-template-rows: 127.5px  26.25px 50px 36px 50px;
@@ -136,7 +142,6 @@
     ". title . . ."
     ". title . edit ."
     "description description description description description";
-    box-sizing: border-box;
   }
 
   .profile__title {
@@ -162,7 +167,7 @@
   }
 
   .profile__add-button {
-    width: 282px;
+    width: calc(100%);
     margin: 0;
   }
 

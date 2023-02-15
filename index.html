@@ -58,7 +58,10 @@
                 placeholder="Name"
                 id="profile__title-input"
                 required
+                minlength="2"
+                maxlength="40"
               >
+              <span class="modal__error modal__title_error" id="profile__title-input-error"></span>
             </fieldset>
 
             <fieldset class="modal__form-fieldset">
@@ -68,11 +71,14 @@
                 placeholder="Description"
                 id="profile__description-input"
                 required
+                minlength="2"
+                maxlength="200"
               >
+               <span class="modal__error modal__description_error" id="profile__description-input-error"></span>
             </fieldset>
 
             <fieldset class="modal__form-fieldset">
-              <button type="submit" class="modal__form-save" id="card-modal-submit">Save</button>
+              <button type="submit" class="modal__form-save modal__button" id="card-modal-submit">Save</button>
             </fieldset>
 
           </form>
@@ -92,22 +98,26 @@
                 name="title"
                 id="card__title-input"
                 required
+                minlength="1"
+                maxlength="30"
               >
+              <span class="modal__error modal__title_error" id="card__title-input-error"></span>
             </fieldset>
 
             <fieldset class="modal__form-fieldset">
               <input 
                 class="modal__form-input"
-                type="text"
+                type="url"
                 placeholder="Image link"
                 id="card__link-input"
                 name="link"
                 required
               >
+              <span class="modal__error modal__description_error" id="card__link-input-error"></span>
             </fieldset>
 
             <fieldset class="modal__form-fieldset">
-              <button type="submit" class="modal__form-save" id="card-add-submit">Save</button>
+              <button type="submit" class="modal__form-save modal__button modal__button_disabled" id="card-add-submit" disabled>Save</button>
             </fieldset>
 
           </form>
@@ -119,7 +129,6 @@
           <button class="modal__close" id="card-image-close"></button>
 					<img class="modal__image-card" id="modal-image-card" src="#" alt=""/>
 					<p class="modal__caption-card" id="card-modal-caption"></p>
-					
 				</div>
 			</div>
       
@@ -128,5 +137,6 @@
       </footer>
     </div>
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
   </body>
 </html>
