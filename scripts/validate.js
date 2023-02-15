@@ -1,7 +1,3 @@
-
-const ProfileEditModal = document.querySelector('#profile-eidit-modal');
-const newPlaceModal = document.querySelector('#card-add-modal');
-const modal = document.querySelector('.modal')
 function showInputError(formElement, inputElement, {inputErrorClass, errorClass}) {
   const errorMessageElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
@@ -55,6 +51,7 @@ function setEventListeners(formElement, config) {
   const { inputSelector } = config;
   const inputElements = [...formElement.querySelectorAll(inputSelector)];
   const submitButton = formElement.querySelector('.modal__button');
+  
   inputElements.forEach(inputElement => {
     inputElement.addEventListener("input", (e) => {
       checkInputValidity(formElement, inputElement, config);
