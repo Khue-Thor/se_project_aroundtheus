@@ -1,23 +1,23 @@
 const initialCards = [
   {
-    title: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+    title: "Wetterhorn",
+    link: "https://images.unsplash.com/photo-1567017469553-d1b219af5831?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3dpdHplcmxhbmQlMjBtb3VudGFpbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
   },
   {
-    title: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+    title: "Laguna beach",
+    link: "https://images.unsplash.com/photo-1519865885898-a54a6f2c7eea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3BsYXNofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
-    title: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    title: "New York City",
+    link: "https://images.unsplash.com/photo-1671831817096-7e635d113260?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
-    title: "Bold Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    title: "Secedas",
+    link: "https://images.unsplash.com/photo-1671644100358-5ea38e1b1885?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NzZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
-    title: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+    title: "Avatar Mountains",
+    link: "https://images.unsplash.com/photo-1567266565245-c08dc046815f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y2hpbmVzZSUyMG1vdW50YWlufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
     title: "Yosemite Valley",
@@ -30,7 +30,7 @@ const initialCards = [
 
 // sprint4 Variables
 const profileEditButton = document.querySelector('.profile__edit');
-const profileEditModal = document.querySelector('.modal');
+const profileEditModal = document.querySelector('#profile-eidit-modal');
 const profileModalCloseBtn = document.querySelector('.modal__close');
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
@@ -64,6 +64,8 @@ const modalImage = document.querySelector("#card-modal-image");
 const modalCaption = document.querySelector("#card-modal-caption");
 const modalImageCard = document.querySelector("#modal-image-card");
 const cardImageModalClose = document.querySelector("#card-image-close");
+
+const closeButtons = document.querySelectorAll('.modal__close');
 /* -----------------*/
 /*    Functions     */
 /* -----------------*/
@@ -157,9 +159,7 @@ function handleOverlay(evt) {
 /*  Event Listener  */
 /* -----------------*/
 profileEditButton.addEventListener('click', openProfileEditForm);
-profileModalCloseBtn.addEventListener("click", () => {
-  closeModal(profileEditModal)
-});
+
 profileForm.addEventListener('submit', handleProfileEditSubmit);
 
 
@@ -169,9 +169,6 @@ cardAddButton.addEventListener("click", () => {
   openModal(cardAddModal);
 });
 
-cardModalCloseBtn.addEventListener("click", () => {
-  closeModal(cardAddModal);
-});
 
 // click to add card
 cardAddForm.addEventListener("submit", (e) => {
@@ -181,14 +178,20 @@ cardAddForm.addEventListener("submit", (e) => {
   const cardView = getCardView({title, link});
   renderCard(cardView, cardLists);
   closeModal(cardAddModal);
+  cardTitleInput.value = "";
+  cardImageInput.value = "";
   cardAddForm.reset();
-});
 
-cardImageModalClose.addEventListener('click', () => { 
-  closeModal(modalImage);
 });
 
 
+closeButtons.forEach((button) => {
+  // find the closest popup 
+  const popup = button.closest('.modal');
+  // set the listener
+  button.addEventListener('click', () => closeModal(popup));
+  
+});
 
 
 /* ------------------ */
@@ -203,4 +206,3 @@ initialCards.forEach((cardData) => {
 /* -------------------------------------- */
 /*                                        */
 /* -------------------------------------- */
-
