@@ -38,14 +38,10 @@ function enableButton(submitButton, {inactiveButtonClass}) {
 function toggleButtonState(inputElement,submitButton, config) {
   if(hasInvalidInput(inputElement)) {
     return disablButton(submitButton, config);
-    
-  } 
-
+  }
   enableButton(submitButton, config);  
  
 }
-
-
 
 function setEventListeners(formElement, config) {
   const { inputSelector } = config;
@@ -67,7 +63,6 @@ function setEventListeners(formElement, config) {
   });
 }
 
-
 function enableValidation(config) {
   const formElement = [...document.querySelectorAll(config.formSelector)];
   formElement.forEach( (formElement) => {
@@ -77,6 +72,7 @@ function enableValidation(config) {
     setEventListeners(formElement, config);
   });
 }
+
 
 
 const config = {
