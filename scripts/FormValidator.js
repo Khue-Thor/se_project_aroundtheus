@@ -26,9 +26,11 @@ class FormValidatior {
 
   _checkInputValidity(inputElement) {
     if(!inputElement.validity.valid) {
-      return this._showInputError(inputElement);
-    } 
-    this._hideInputError(inputElement);
+      this._showInputError(inputElement);
+    } else {
+      this._hideInputError(inputElement);
+    }
+   
  }
 
   
@@ -58,13 +60,12 @@ class FormValidatior {
     this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
 
-   this._form.addEventListener("reset", () => {
-    setTimeout(() => {
-      this._toggleButtonState();
+    this._form.addEventListener("reset", () => {
+      setTimeout(() => {
+        this._toggleButtonState();
+      });
     });
-  });
-  
-
+    this._disablButton();
 
     this._inputElements.forEach(inputElement => {
       inputElement.addEventListener("input", () => {

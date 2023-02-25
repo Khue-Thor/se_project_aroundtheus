@@ -14,13 +14,6 @@
 	pointer-events: none;
 }
 
-.esc-to_close {
-  visibility: hidden;
-  background: none;
-  display: none;
-}
-
-
 .modal__container {
   position: relative;
   margin: auto;
@@ -28,12 +21,10 @@
   height: 330px;
   border-radius: 10px;
   background: #ffffff;
-  padding: 0 0 36.51px 0;
 }
 
 
 .modal_opened {
-  display: flex;
   align-items: center;
 	justify-content: center;
 	visibility: visible;
@@ -83,16 +74,6 @@
   border-left: none;
   border-right: none;
   border-bottom: 1px solid rgb(0,0,0,0.2);
-  
-}
-
-.modal__form-fieldset:nth-child(3) {
-  margin-bottom: 48px;
-}
-
-.modal__form-fieldset:last-child {
-  border-radius: 2px;
-  margin-bottom: 0;
 }
 
 
@@ -126,11 +107,6 @@
   padding: 0;
   border: none;
   border-radius: 2px;
-}
-
-.modal__form-save:hover {
-  cursor: pointer;
-  opacity: 0.6;
 }
 
 .modal__container-card {
@@ -171,9 +147,15 @@
   border-top: 1px solid #ff0000;
 }
 
+.modal__button:hover:not(:disabled) {
+  opacity: 0.8;
+  cursor: pointer;
+} 
+
 .modal__button_disabled {
   background-color: #fff;
   opacity: 0.2;
+  cursor: default;
   border: 1px solid #000;
   color: #000000;
 }

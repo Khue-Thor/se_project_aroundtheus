@@ -106,6 +106,7 @@ function handleAddCardSubmit(e) {
 function handleCardClick() {
   openModal(cardModalImage);
 }
+/* The Old Functions */
 
 // function toggleLikeBtn() {
 //   cardLikeButton.classList.add('card__like-button-toggle')
