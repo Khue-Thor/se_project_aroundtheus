@@ -1,4 +1,4 @@
-import "../pages/index.css";
+import "./index.css";
 
 import FormValidatior from "../components/FormValidator";
 import Card from "../components/Card";
