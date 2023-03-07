@@ -2,7 +2,7 @@
   "name": "practicum",
   "version": "0.0.1",
   "description": "",
-  "main": "./src/scripts/index.js",
+  "main": "./src/pages/index.js",
   "scripts": {
     "build": "rm -rf dist && webpack --mode production",
     "dev": "webpack serve --mode development"

@@ -1,4 +1,4 @@
-import { handleCardClick } from "./index.js";
+import { handleCardClick } from "../pages/index.js";
 
 const modalCaption = document.querySelector("#card-modal-caption");
 const modalImageCard = document.querySelector("#modal-image-card");
