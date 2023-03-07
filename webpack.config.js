@@ -14,7 +14,6 @@ module.exports = {
     filename: "main.js",
     publicPath: "",
   },
-  target: ["web", "es5"],
   stats: "errors-only",
   mode: "development",
   devServer: {
