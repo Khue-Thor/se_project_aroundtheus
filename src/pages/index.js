@@ -36,30 +36,23 @@ const initialCards = [
 /* -----------------*/
 const profileEditButton = document.querySelector('.profile__edit');
 const profileEditModal = document.querySelector('#profile-eidit-modal');
-// const profileModalCloseBtn = document.querySelector('.modal__close');
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
 const profileTitleInput = document.querySelector('#profile__title-input');
 const profileDescriptionInput = document.querySelector('#profile__description-input');
-// const submitButton = document.querySelector('.modle__form_save');
 const profileForm = document.querySelector('.modal__form');
 
 
 const cardsContainer = document.querySelector('.cards');
 const cardLists = cardsContainer.querySelector('.cards__list');
 
-// const cardTemplate = cardLists.querySelector('#card__template').content.firstElementChild;
-
 
 const cardAddButton = document.querySelector("#card__add-button");
 const cardAddModal = document.querySelector("#card-add-modal");
-// const cardModalCloseBtn = document.querySelector("#card-Add-Modal__close_button");
+
 
 const cardAddForm = document.querySelector("#card-add-form");
-// const cardAddSubmit = document.querySelector("#card-add-submit");
 
-// const cardTitle = document.querySelector("#card-title");
-// const cardImage = document.querySelector("#card-image");
 
 const cardTitleInput = document.querySelector("#card__title-input");
 const cardImageInput = document.querySelector("#card__link-input");
