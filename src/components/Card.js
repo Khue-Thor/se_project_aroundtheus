@@ -1,29 +1,23 @@
-import { handleCardClick } from "../pages/index.js";
-
-const modalCaption = document.querySelector("#card-modal-caption");
-const modalImageCard = document.querySelector("#modal-image-card");
-
-
+import PopupWithImage from "./PopupWithImage";
 
 class Card {
 
-  constructor(cardData, cardSelector){
+  constructor(cardData, cardSelector, handleImageClick){
     this._title = cardData.title;
     this._link = cardData.link;
-
+    this._handleImageClick = handleImageClick;
 
     this._cardSelector = cardSelector;
+    
   }
 
   _setEventListeners() {
     this._cardLikeButton.addEventListener("click", () => this._handleLikeButton())
-  
     this._cardRemoveButton.addEventListener("click", this._removeCard);
-  
-    this._cardImage.addEventListener("click", () => {
-      this._handleCardImageModal();
-    });
+    this._cardImage.addEventListener("click", () => this._handlePreview());
   }
+
+  
 
   _handleLikeButton = () => {
     this._cardLikeButton.classList.toggle("card__like-button_toggle");
@@ -34,12 +28,10 @@ class Card {
     this._element = null;
   };
 
-  _handleCardImageModal() {
-    modalImageCard.src = this._link;
-    modalImageCard.alt = this._title;
-    modalCaption.textContent = this._title;
-    handleCardClick();
-  }
+  _handlePreview() {
+    this._handleImageClick = new PopupWithImage(this._title, this._link);
+    
+  };
 
   _getTemplate() {
     return document
