@@ -10,37 +10,21 @@ import PopupWithImage from "../components/PopupWithImage";
 const CardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup)
 
 
-// const cardSection = new Section(
-//   {
-//   renderer: (data) => {
-//     const cardElement = new Card(
-//       {
-//         data,
-//         handleImageClick: (imgData) => {
-//           CardPreviewPopup.open(imgData);
-//         },
-//       }, 
-//       containerSelectors.cardTemplate);
-//     cardSection.addItem(cardElement.getView());
-//   },
-//   },containerSelectors.cardSection
-// );
-
 const cardSection = new Section(
   {
-    renderer: (data) => {
-      const cardElement = new Card(
-        data,
-        containerSelectors.cardTemplate,
-      )
-      cardSection.addItem(cardElement.getView());
-    }
-  }, containerSelectors.cardSection
+    renderer: (cardData) => {
+      const cardEl = new Card({cardData, handleImageClick: (imgData) => {
+        CardPreviewPopup.open(imgData);
+      }},containerSelectors.cardTemplate);
+      cardSection.addItem(cardEl.getView());
+    },
+  },containerSelectors.cardSection
+  
 )
 
 cardSection.renderItems(initialCards);
-
 CardPreviewPopup._setEventListeners()
+
 
 
 
