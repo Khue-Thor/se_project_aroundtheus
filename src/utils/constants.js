@@ -30,5 +30,13 @@ export const initialCards = [
 export const containerSelectors = {
   cardSection: '.cards__list',
   cardTemplate: '#card__template',
-  cardPreviewPopup: '#card-modal-image'
+  cardPreviewPopup: '#card-modal-image',
+  profileFormPopup: '#profile-eidit-modal',
+  cardAddForm: '#card-add-modal'
 }
+
+export const profileTitle = document.querySelector('.profile__title');
+export const profileDescription = document.querySelector('.profile__description');
+export const profileTitleInput = document.querySelector('#profile__title-input');
+export const profileDescriptionInput = document.querySelector('#profile__description-input');
+export const profileEditButton = document.querySelector('.profile__edit');
