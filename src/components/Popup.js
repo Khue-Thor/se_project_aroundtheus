@@ -1,3 +1,5 @@
+
+
 export default class Popup {
   constructor(popupSelector) {
     this._popupElement = document.querySelector(popupSelector);
@@ -11,7 +13,16 @@ export default class Popup {
     }
   }
 
-  _setEventListeners() {
+  open() {
+    this._popupElement.classList.add("modal_opened");
+  }
+
+  close() {
+    this._popupElement.classList.remove("modal_opened");
+    document.removeEventListener("keydown", (e) => this._handleEscClose(e));
+  }
+
+  setEventListeners() {
     this._popupElement.addEventListener('mousedown', (evt) => {
       if (evt.target.classList.contains("modal_opened")) {
         this.close();
@@ -23,12 +34,5 @@ export default class Popup {
     });
   }
 
-  open() {
-    this._popupElement.classList.add("modal_opened");
-  }
-
-  close() {
-    this._popupElement.classList.remove("modal_opened");
-    document.removeEventListener("keydown", (e) => this._handleEscClose(e));
-  }
+ 
 }

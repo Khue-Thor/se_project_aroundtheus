@@ -3,8 +3,8 @@ import PopupWithImage from "./PopupWithImage";
 class Card {
 
   constructor({cardData, handleImageClick}, cardSelector){
-    this._title = cardData.title;
     this._link = cardData.link;
+    this._title = cardData.title;
     this._handleImageClick = handleImageClick;
 
     this._cardSelector = cardSelector;
@@ -29,7 +29,7 @@ class Card {
   };
 
   _handlePreview() {
-    this._handleImageClick(this._title, this._link);
+    this._handleImageClick(this._title, this._link );
     
   };
 
