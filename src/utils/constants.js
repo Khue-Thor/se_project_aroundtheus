@@ -31,8 +31,9 @@ export const containerSelectors = {
   cardSection: '.cards__list',
   cardTemplate: '#card__template',
   cardPreviewPopup: '#card-modal-image',
-  profileFormPopup: '#profile-eidit-modal',
-  cardAddModal: '#card-add-modal'
+  profilePopup: '#profile-eidit-modal',
+  profileEdit: '.modal__form',
+  cardAddModal: '#card-add-modal',
 }
 
 export const profileTitle = document.querySelector('.profile__title');

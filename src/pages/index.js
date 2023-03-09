@@ -8,6 +8,7 @@ import
   profileTitleInput,
   profileDescriptionInput,
   profileEditButton,
+  cardAddButton,
 } from "../utils/constants";
 
 import Card from "../components/Card";
@@ -57,13 +58,6 @@ const cardSection = new Section(
 // Create instances of the classes
 
 
-const CardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
-const profileFormPopup = new Popup(containerSelectors.profileFormPopup);
-const profileEditForm = new PopupWithForm(
-  {popupSelector: containerSelectors.profileFormPopup, submitEditProfile}
-);
-
-const cardAddModal = new Popup(containerSelectors.cardAddModal);
 
 const userInfo = new UserInfo({
   nameSelector: "#profile__title-input",
@@ -77,31 +71,18 @@ function openProfileEditForm() {
     name: (profileTitleInput.value = profileTitle.textContent),
     job: (profileDescriptionInput.value =profileDescription.textContent),
   });
- profileFormPopup.open(containerSelectors.profileFormPopup);
+ profilePopup.open();
 }
 
 function submitEditProfile(e) {
   e.preventDefault();
-  userInfo.setUserInfo({
+  userInfo.getUserInfo({
     name: (profileTitle.textContent =profileTitleInput.value),
     job: (profileDescription.textContent = profileDescriptionInput.value),
   });
-  profileFormPopup.close(containerSelectors.profileFormPopup);
+  profilePopup.close();
 }
 
-
-
-
-
-// Initialize all my instances
-
-cardSection.renderItems(initialCards);
-CardPreviewPopup.setEventListeners();
-
-
-profileEditButton.addEventListener('click', openProfileEditForm);
-profileFormPopup.setEventListeners();
-profileEditForm.setEventListeners();
 
 
 // cardAddButton.addEventListener("click", )
@@ -110,4 +91,30 @@ profileEditForm.setEventListeners();
 
 
 
-// All the rest
+// --------------Popup--------------- //
+
+const CardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
+
+const profilePopup = new Popup(containerSelectors.profilePopup);
+const profileEditForm = new PopupWithForm({
+  popupSelector: containerSelectors.profilePopup, handleFormSubmit: (e) => {
+    submitEditProfile(e);
+  }}
+);
+
+const cardAddModal = new Popup(containerSelectors.cardAddModal);
+cardAddModal.setEventListeners()
+
+// ------Initialize all my instances------- //
+
+cardSection.renderItems(initialCards);
+
+
+CardPreviewPopup.setEventListeners();
+
+
+profileEditButton.addEventListener('click', openProfileEditForm);
+profilePopup.setEventListeners();
+profileEditForm.setEventListeners();
+
+// cardAddButton.addEventListener('click', cardAddModal.open());
