@@ -24,7 +24,7 @@ import PopupWithImage from "../components/PopupWithImage";
 
 
 
-// -------------card-Section---------------- //
+// -------------Create instances for card-Section---------------- //
 const cardSection = new Section(
   {
     renderer: (cardData) => {
@@ -53,20 +53,7 @@ const cardAddForm = new PopupWithForm({
 });
 
 
-// const cardsContainer = document.querySelector('.cards');
-// const cardLists = cardsContainer.querySelector('.cards__list');
-
-
-// function submitAddCard(e) {
-//   const title = cardTitleInput.value;
-//   const link = cardImageInput.value;
-//   const card = cardSection;
-//   cardLists.prepend(card);
-// }
-
-
-
-// Create instances of the classes
+// -------Create instances of the classes for others-------- //
 
 const userInfo = new UserInfo({
   nameSelector: "#profile__title-input",
@@ -92,12 +79,12 @@ function openProfileEditForm() {
  profilePopup.open();
 }
 
-function openCardAddForm() {
- cardAddPopup.open();
-}
 
+// ----------Click to Open Modal---------- //
 profileEditButton.addEventListener('click', openProfileEditForm);
-cardAddButton.addEventListener('click', openCardAddForm);
+cardAddButton.addEventListener('click', () => {
+  cardAddPopup.open();
+});
 // ------Initialize all my instances------- //
 
 cardSection.renderItems(initialCards);
