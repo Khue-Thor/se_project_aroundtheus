@@ -96,8 +96,8 @@ function openCardAddForm() {
  cardAddPopup.open();
 }
 
-
-
+profileEditButton.addEventListener('click', openProfileEditForm);
+cardAddButton.addEventListener('click', openCardAddForm);
 // ------Initialize all my instances------- //
 
 cardSection.renderItems(initialCards);
@@ -106,12 +106,11 @@ cardSection.renderItems(initialCards);
 CardPreviewPopup.setEventListeners();
 
 
-profileEditButton.addEventListener('click', openProfileEditForm);
+
 profilePopup.setEventListeners();
 profileEditForm._setEventListeners();
 
 
-cardAddButton.addEventListener('click', openCardAddForm);
 cardAddPopup.setEventListeners();
 cardAddForm._setEventListeners();
 
