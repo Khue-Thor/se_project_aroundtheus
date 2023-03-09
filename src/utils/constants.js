@@ -32,7 +32,7 @@ export const containerSelectors = {
   cardTemplate: '#card__template',
   cardPreviewPopup: '#card-modal-image',
   profileFormPopup: '#profile-eidit-modal',
-  cardAddForm: '#card-add-modal'
+  cardAddModal: '#card-add-modal'
 }
 
 export const profileTitle = document.querySelector('.profile__title');
@@ -40,3 +40,7 @@ export const profileDescription = document.querySelector('.profile__description'
 export const profileTitleInput = document.querySelector('#profile__title-input');
 export const profileDescriptionInput = document.querySelector('#profile__description-input');
 export const profileEditButton = document.querySelector('.profile__edit');
+
+export const cardAddButton = document.querySelector("#card__add-button");
+export const cardTitleInput = document.querySelector("#card__title-input");
+export const cardImageInput = document.querySelector("#card__link-input");

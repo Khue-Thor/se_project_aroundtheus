@@ -7,84 +7,19 @@ import
   profileDescription,
   profileTitleInput,
   profileDescriptionInput,
-  profileEditButton
+  profileEditButton,
 } from "../utils/constants";
-import FormValidatior from "../components/FormValidator";
+
 import Card from "../components/Card";
-import Section from "../components/Section";
 import Popup from "../components/Popup";
-import PopupWithImage from "../components/PopupWithImage";
-import PopupWithForm from "../components/popupWithForm";
+import Section from "../components/Section";
 import UserInfo from "../components/UserInfo";
+import PopupWithForm from "../components/popupWithForm";
+import FormValidatior from "../components/FormValidator";
+import PopupWithImage from "../components/PopupWithImage";
 
 
-// Create instances of the classes
-
-
-const CardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
-
-
-const cardSection = new Section(
-  {
-    renderer: (cardData) => {
-      const cardEl = new Card({cardData, handleImageClick: (imgData, imgCard) => {
-        CardPreviewPopup.open(imgData, imgCard);
-      }},containerSelectors.cardTemplate);
-      cardSection.addItem(cardEl.getView());
-    },
-  },containerSelectors.cardSection
-  
-);
-
-const userInfo = new UserInfo({
-  nameSelector: "#profile__title-input",
-  jobSelector: "#profile__description-input",
-});
-
-// function>>>>>>>>>>> //
-
-function openProfileEditForm() {
-  userInfo.setUserInfo({
-    name: (profileTitleInput.value = profileTitle.textContent),
-    job: (profileDescriptionInput.value =profileDescription.textContent),
-  });
- profileFormPopup.open(containerSelectors.profileFormPopup);
-}
-
-function submitEditProfile() {
-  userInfo.setUserInfo({
-    name: (profileTitle.textContent =profileTitleInput.value),
-    job: (profileDescription.textContent = profileDescriptionInput.value),
-  });
-  profileFormPopup.close(modalEditProfile);
-}
-const profileFormPopup = new Popup(containerSelectors.profileFormPopup);
-const profileEditForm = new PopupWithForm({
-  popupSelector: containerSelectors.profileFormPopup,
-  handleFormSubmit: (data) => {
-    userInfo.setUserInfo({
-      name: (profileTitle.textContent =profileTitleInput.value),
-      job: (profileDescription.textContent = profileDescriptionInput.value),
-    });
-  }
-  
-});
-
-
-
-
-// Initialize all my instances
-
-cardSection.renderItems(initialCards);
-CardPreviewPopup.setEventListeners();
-
-
-profileEditButton.addEventListener('click', openProfileEditForm);
-profileFormPopup.setEventListeners();
-profileEditForm.setEventListeners();
-// cardAddForm._setEventListeners();
-
-// Form Validation //
+// ------------Form Validation--------------- //
 const validationSettings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__form-input",
@@ -102,6 +37,76 @@ const addFormValidator = new FormValidatior(validationSettings, addFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+
+
+
+// -------------card-Section---------------- //
+const cardSection = new Section(
+  {
+    renderer: (cardData) => {
+      const cardEl = new Card({cardData, handleImageClick: (imgData, imgCard) => {
+        CardPreviewPopup.open(imgData, imgCard);
+      }},containerSelectors.cardTemplate);
+      cardSection.addItem(cardEl.getView());
+    },
+  },containerSelectors.cardSection
+  
+);
+
+
+// Create instances of the classes
+
+
+const CardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
+const profileFormPopup = new Popup(containerSelectors.profileFormPopup);
+const profileEditForm = new PopupWithForm(
+  {popupSelector: containerSelectors.profileFormPopup, submitEditProfile}
+);
+
+const cardAddModal = new Popup(containerSelectors.cardAddModal);
+
+const userInfo = new UserInfo({
+  nameSelector: "#profile__title-input",
+  jobSelector: "#profile__description-input",
+});
+
+// ----------------function--------------//
+
+function openProfileEditForm() {
+  userInfo.setUserInfo({
+    name: (profileTitleInput.value = profileTitle.textContent),
+    job: (profileDescriptionInput.value =profileDescription.textContent),
+  });
+ profileFormPopup.open(containerSelectors.profileFormPopup);
+}
+
+function submitEditProfile(e) {
+  e.preventDefault();
+  userInfo.setUserInfo({
+    name: (profileTitle.textContent =profileTitleInput.value),
+    job: (profileDescription.textContent = profileDescriptionInput.value),
+  });
+  profileFormPopup.close(containerSelectors.profileFormPopup);
+}
+
+
+
+
+
+// Initialize all my instances
+
+cardSection.renderItems(initialCards);
+CardPreviewPopup.setEventListeners();
+
+
+profileEditButton.addEventListener('click', openProfileEditForm);
+profileFormPopup.setEventListeners();
+profileEditForm.setEventListeners();
+
+
+// cardAddButton.addEventListener("click", )
+
+
 
 
 
