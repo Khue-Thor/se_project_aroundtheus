@@ -1,4 +1,3 @@
-import PopupWithImage from "./PopupWithImage";
 
 class Card {
 
@@ -29,7 +28,7 @@ class Card {
   };
 
   _handlePreview() {
-    this._handleImageClick(this._title, this._link );
+    this._handleImageClick(this._title, this._link);
     
   };
 

@@ -38,6 +38,34 @@ const cardSection = new Section(
 );
 
 
+const CardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
+
+
+const cardAddPopup = new Popup(containerSelectors.cardAddModal);
+const cardAddForm = new PopupWithForm({
+  popupSelector: containerSelectors.cardAddModal,
+  handleFormSubmit : (cardData) => {
+    const card = new Card({cardData, handleImageClick: (title, image) => {
+      CardPreviewPopup.open(title, image);
+    }},containerSelectors.cardTemplate);
+    cardSection.addItem(card.getView())
+  }
+});
+
+
+// const cardsContainer = document.querySelector('.cards');
+// const cardLists = cardsContainer.querySelector('.cards__list');
+
+
+// function submitAddCard(e) {
+//   const title = cardTitleInput.value;
+//   const link = cardImageInput.value;
+//   const card = cardSection;
+//   cardLists.prepend(card);
+// }
+
+
+
 // Create instances of the classes
 
 const userInfo = new UserInfo({
@@ -45,7 +73,6 @@ const userInfo = new UserInfo({
   jobSelector: "#profile__description-input",
 });
 
-const CardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
 
 const profilePopup = new Popup(containerSelectors.profilePopup);
 const profileEditForm = new PopupWithForm({
@@ -56,27 +83,6 @@ const profileEditForm = new PopupWithForm({
     });
   }}
 );
-
-const cardAddPopup = new Popup(containerSelectors.cardAddModal);
-const cardAddForm = new PopupWithForm({
-  popupSelector: containerSelectors.cardAddModal,
-  handleFormSubmit : () => {
-    submitAddCard
-  }
-});
-// const cardAddForm = new PopupWithForm({
-//   popupSelector: containerSelectors.cardAddModal,
-//   handleFormSubmit : (data) => {
-//    const card = new Card({
-//     data,
-//     handleImageClick: () => {
-//       CardPreviewPopup.open(data);
-//     }
-//    }, containerSelectors.cardTemplate)
-//    cardSection.addItem(card.getView());
-//   }
-// });
-// ----------------function--------------//
 
 function openProfileEditForm() {
   userInfo.setUserInfo({
@@ -90,29 +96,6 @@ function openCardAddForm() {
  cardAddPopup.open();
 }
 
-const cardsContainer = document.querySelector('.cards');
-const cardLists = cardsContainer.querySelector('.cards__list');
-
-function renderCard(cardData) {
-  const card = new Card(
-    cardData,
-    "#card-template",
-    handleImageClick
-  ).renderCard();
-  cardLists.prepend(card);
-}
-
-function handleImageClick(name, link) {
-  imagePopup.open(name, link);
-}
-
-function submitAddCard() {
-  const title = cardTitleInput.value;
-  const link = cardImageInput.value;
-  renderCard({ title, link }, cardLists);
-  cardAddPopup.close(addCardModal);
-  console.log(title)
-}
 
 
 // ------Initialize all my instances------- //
@@ -142,8 +125,8 @@ const validationSettings = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible"
 };
-const editFormElement = document.querySelector('.modal__form');
-const addFormElement = document.querySelector('.modal__form');
+const editFormElement = document.querySelector('#profile-eidit-modal');
+const addFormElement = document.querySelector('#card-add-form');
 
 const editFormValidator = new FormValidatior(validationSettings, editFormElement);
 const addFormValidator = new FormValidatior(validationSettings, addFormElement);
