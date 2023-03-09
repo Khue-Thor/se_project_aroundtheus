@@ -34,7 +34,6 @@ const cardSection = new Section(
       cardSection.addItem(cardEl.getView());
     },
   },containerSelectors.cardSection
-  
 );
 
 
@@ -45,8 +44,8 @@ const cardAddPopup = new Popup(containerSelectors.cardAddModal);
 const cardAddForm = new PopupWithForm({
   popupSelector: containerSelectors.cardAddModal,
   handleFormSubmit : (cardData) => {
-    const card = new Card({cardData, handleImageClick: (title, image) => {
-      CardPreviewPopup.open(title, image);
+    const card = new Card({cardData, handleImageClick: (imgData, imgCard) => {
+      CardPreviewPopup.open(imgData, imgCard);
     }},containerSelectors.cardTemplate);
     cardSection.addItem(card.getView())
   }
@@ -85,13 +84,12 @@ profileEditButton.addEventListener('click', openProfileEditForm);
 cardAddButton.addEventListener('click', () => {
   cardAddPopup.open();
 });
+
+
 // ------Initialize all my instances------- //
 
 cardSection.renderItems(initialCards);
-
-
 CardPreviewPopup.setEventListeners();
-
 
 
 profilePopup.setEventListeners();
