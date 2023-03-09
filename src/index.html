@@ -4,28 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <title>Around-The-US</title>
-    <link rel="stylesheet" href="./pages/index.css">
-    <link rel="icon" href="./favicon.ico">
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header">
-        <img src="./images/logo.svg" alt="logo" class="logo">
+        <img src="<%=require('./images/logo.svg')%>" alt="logo" class="logo">
       </header>
 
       <main class="content">
         <section class="profile">
-          <img src="./images/Avatar.png" alt="avatar" class="profile__avatar">
+          <img src="<%=require('./images/Avatar.png')%>" alt="avatar" class="profile__avatar">
           
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button class="profile__edit" type="button">
-              <img src="./images/edit.svg" alt="edit-button" class="profile__edit-button">
+              <img src="<%=require('./images/edit.svg')%>" alt="edit-button" class="profile__edit-button">
             </button>
             <p class="profile__description">Explorer</p>
           </div>
 
-          <button class="profile__add-button" id="card__add-button" type="button">
+          <button class="profile__add-button modal__button" id="card__add-button" type="button">
           </button>
           
         </section>
@@ -133,10 +131,9 @@
 				</div>
 			</div>
       
-      <footer class="footer">
+      <footer cla ss="footer">
         <p class="footer__copyright">© 2022 Around the U.S.</p>
       </footer>
     </div>
-    <script type="module" src="./scripts/index.js" defer></script>
   </body>
 </html>
