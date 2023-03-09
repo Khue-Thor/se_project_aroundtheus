@@ -3,7 +3,7 @@
 export default class Popup {
   constructor(popupSelector) {
     this._popupElement = document.querySelector(popupSelector);
-    this._closeBtn = document.querySelector(".modal__close");
+    this._closeBtn = this._popupElement.querySelector(".modal__close");
   }
 
   _handleEscClose(evt) {
@@ -37,7 +37,4 @@ export default class Popup {
     });
   }
 
-  
-
- 
 }

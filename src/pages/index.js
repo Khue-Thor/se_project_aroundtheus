@@ -9,13 +9,15 @@ import
   profileDescriptionInput,
   profileEditButton,
   cardAddButton,
+  cardTitleInput,
+  cardImageInput
 } from "../utils/constants";
 
 import Card from "../components/Card";
 import Popup from "../components/Popup";
 import Section from "../components/Section";
 import UserInfo from "../components/UserInfo";
-import PopupWithForm from "../components/popupWithForm";
+import PopupWithForm from "../components/PopupWithForm";
 import FormValidatior from "../components/FormValidator";
 import PopupWithImage from "../components/PopupWithImage";
 
@@ -57,13 +59,42 @@ const cardSection = new Section(
 
 // Create instances of the classes
 
-
-
 const userInfo = new UserInfo({
   nameSelector: "#profile__title-input",
   jobSelector: "#profile__description-input",
 });
 
+const CardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
+
+const profilePopup = new Popup(containerSelectors.profilePopup);
+const profileEditForm = new PopupWithForm({
+  popupSelector: containerSelectors.profilePopup, handleFormSubmit: (name, job) => {
+    userInfo.getUserInfo({
+      name: (profileTitle.textContent =profileTitleInput.value),
+      job: (profileDescription.textContent = profileDescriptionInput.value),
+    });
+  }}
+);
+
+const cardAddPopup = new Popup(containerSelectors.cardAddModal);
+const cardAddForm = new PopupWithForm({
+  popupSelector: containerSelectors.cardAddModal,
+  handleFormSubmit : () => {
+    submitAddCard();
+  }
+});
+// const cardAddForm = new PopupWithForm({
+//   popupSelector: containerSelectors.cardAddModal,
+//   handleFormSubmit : (data) => {
+//    const card = new Card({
+//     data,
+//     handleImageClick: () => {
+//       CardPreviewPopup.open(data);
+//     }
+//    }, containerSelectors.cardTemplate)
+//    cardSection.addItem(card.getView());
+//   }
+// });
 // ----------------function--------------//
 
 function openProfileEditForm() {
@@ -74,36 +105,15 @@ function openProfileEditForm() {
  profilePopup.open();
 }
 
-function submitEditProfile(e) {
-  e.preventDefault();
-  userInfo.getUserInfo({
-    name: (profileTitle.textContent =profileTitleInput.value),
-    job: (profileDescription.textContent = profileDescriptionInput.value),
-  });
-  profilePopup.close();
+function openCardAddForm() {
+ cardAddPopup.open();
+}
+
+function submitAddCard() {
+   cardAddPopup.close();
 }
 
 
-
-// cardAddButton.addEventListener("click", )
-
-
-
-
-
-// --------------Popup--------------- //
-
-const CardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
-
-const profilePopup = new Popup(containerSelectors.profilePopup);
-const profileEditForm = new PopupWithForm({
-  popupSelector: containerSelectors.profilePopup, handleFormSubmit: (e) => {
-    submitEditProfile(e);
-  }}
-);
-
-const cardAddModal = new Popup(containerSelectors.cardAddModal);
-cardAddModal.setEventListeners()
 
 // ------Initialize all my instances------- //
 
@@ -115,6 +125,9 @@ CardPreviewPopup.setEventListeners();
 
 profileEditButton.addEventListener('click', openProfileEditForm);
 profilePopup.setEventListeners();
-profileEditForm.setEventListeners();
+profileEditForm._setEventListeners();
 
-// cardAddButton.addEventListener('click', cardAddModal.open());
+
+cardAddButton.addEventListener('click', openCardAddForm);
+cardAddPopup.setEventListeners();
+cardAddForm._setEventListeners();
