@@ -22,25 +22,6 @@ import FormValidatior from "../components/FormValidator";
 import PopupWithImage from "../components/PopupWithImage";
 
 
-// ------------Form Validation--------------- //
-const validationSettings = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__form-input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible"
-};
-
-const editFormElement = document.querySelector('.modal__form');
-const addFormElement = document.querySelector('.modal__form');
-
-const editFormValidator = new FormValidatior(validationSettings, editFormElement);
-const addFormValidator = new FormValidatior(validationSettings, addFormElement);
-
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
-
 
 
 // -------------card-Section---------------- //
@@ -80,7 +61,7 @@ const cardAddPopup = new Popup(containerSelectors.cardAddModal);
 const cardAddForm = new PopupWithForm({
   popupSelector: containerSelectors.cardAddModal,
   handleFormSubmit : () => {
-    submitAddCard();
+    submitAddCard
   }
 });
 // const cardAddForm = new PopupWithForm({
@@ -109,10 +90,29 @@ function openCardAddForm() {
  cardAddPopup.open();
 }
 
-function submitAddCard() {
-   cardAddPopup.close();
+const cardsContainer = document.querySelector('.cards');
+const cardLists = cardsContainer.querySelector('.cards__list');
+
+function renderCard(cardData) {
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleImageClick
+  ).renderCard();
+  cardLists.prepend(card);
 }
 
+function handleImageClick(name, link) {
+  imagePopup.open(name, link);
+}
+
+function submitAddCard() {
+  const title = cardTitleInput.value;
+  const link = cardImageInput.value;
+  renderCard({ title, link }, cardLists);
+  cardAddPopup.close(addCardModal);
+  console.log(title)
+}
 
 
 // ------Initialize all my instances------- //
@@ -131,3 +131,23 @@ profileEditForm._setEventListeners();
 cardAddButton.addEventListener('click', openCardAddForm);
 cardAddPopup.setEventListeners();
 cardAddForm._setEventListeners();
+
+// ------------Form Validation--------------- //
+
+const validationSettings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__form-input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible"
+};
+const editFormElement = document.querySelector('.modal__form');
+const addFormElement = document.querySelector('.modal__form');
+
+const editFormValidator = new FormValidatior(validationSettings, editFormElement);
+const addFormValidator = new FormValidatior(validationSettings, addFormElement);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+

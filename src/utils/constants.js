@@ -32,7 +32,6 @@ export const containerSelectors = {
   cardTemplate: '#card__template',
   cardPreviewPopup: '#card-modal-image',
   profilePopup: '#profile-eidit-modal',
-  profileEdit: '.modal__form',
   cardAddModal: '#card-add-modal',
 }
 
