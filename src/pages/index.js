@@ -99,11 +99,8 @@ cardSection.renderItems(initialCards);
 CardPreviewPopup.setEventListeners();
 
 
-profilePopup.setEventListeners();
 profileEditForm._setEventListeners();
 
-
-cardAddPopup.setEventListeners();
 cardAddForm._setEventListeners();
 
 // ------------Form Validation--------------- //
