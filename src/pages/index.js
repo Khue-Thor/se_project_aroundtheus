@@ -26,14 +26,7 @@ import PopupWithImage from "../components/PopupWithImage";
 const cardSection = new Section(
   {
     renderer: (cardData) => {
-      const cardEl = new Card({
-        cardData,
-        handleImageClick: (imgData, imgCard) => {
-          CardPreviewPopup.open(imgData, imgCard);
-        }
-      },containerSelectors.cardTemplate);
-
-      cardSection.addItem(cardEl.getView());
+      CreateCard(cardData);
     }
   },containerSelectors.cardSection
 );
@@ -46,15 +39,21 @@ const cardAddPopup = new Popup(containerSelectors.cardAddModal);
 const cardAddForm = new PopupWithForm({
   popupSelector: containerSelectors.cardAddModal,
   handleFormSubmit : (cardData) => {
-    const card = new Card({
-      cardData,
-      handleImageClick: (imgData, imgCard) => {
-        CardPreviewPopup.open(imgData, imgCard);
-      }
-    },containerSelectors.cardTemplate);
-    cardSection.addItem(card.getView());
+    CreateCard(cardData)
   }
 });
+
+function CreateCard(cardData) {
+  const cardElement = new Card({
+    cardData,
+    handleImageClick: (imgData, imgCard) => {
+      CardPreviewPopup.open(imgData, imgCard);
+    }
+  },containerSelectors.cardTemplate);
+  cardSection.addItem(cardElement.getView());
+
+  return cardElement;
+}
 
 
 // -------Create instances of the classes for others-------- //
