@@ -50,12 +50,11 @@ const cardAddForm = new PopupWithForm({
   handleFormSubmit : (cardData) => {
     const card = new Card({
       cardData,
-      handleImageClick: ({imgData, imgCard}) => {
-          CardPreviewPopup.open({imgData, imgCard});
+      handleImageClick: (imgData, imgCard) => {
+        CardPreviewPopup.open(imgData, imgCard);
       }
     },containerSelectors.cardTemplate);
-    
-    cardSection.addItem(card.getView())
+    cardSection.addItem(card.getView());
   }
 });
 
