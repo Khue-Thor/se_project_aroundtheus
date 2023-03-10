@@ -9,8 +9,6 @@ import
   profileDescriptionInput,
   profileEditButton,
   cardAddButton,
-  cardTitleInput,
-  cardImageInput
 } from "../utils/constants";
 
 import Card from "../components/Card";
@@ -97,10 +95,7 @@ cardAddButton.addEventListener('click', () => {
 
 cardSection.renderItems(initialCards);
 CardPreviewPopup.setEventListeners();
-
-
 profileEditForm._setEventListeners();
-
 cardAddForm._setEventListeners();
 
 // ------------Form Validation--------------- //
