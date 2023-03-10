@@ -24,17 +24,20 @@ import PopupWithImage from "../components/PopupWithImage";
 
 
 
-// -------------card-Section---------------- //
+// -------------Create instances for card-Section---------------- //
 const cardSection = new Section(
   {
     renderer: (cardData) => {
-      const cardEl = new Card({cardData, handleImageClick: (imgData, imgCard) => {
-        CardPreviewPopup.open(imgData, imgCard);
-      }},containerSelectors.cardTemplate);
+      const cardEl = new Card({
+        cardData,
+        handleImageClick: (imgData, imgCard) => {
+          CardPreviewPopup.open(imgData, imgCard);
+        }
+      },containerSelectors.cardTemplate);
+
       cardSection.addItem(cardEl.getView());
-    },
+    }
   },containerSelectors.cardSection
-  
 );
 
 
@@ -45,28 +48,18 @@ const cardAddPopup = new Popup(containerSelectors.cardAddModal);
 const cardAddForm = new PopupWithForm({
   popupSelector: containerSelectors.cardAddModal,
   handleFormSubmit : (cardData) => {
-    const card = new Card({cardData, handleImageClick: (title, image) => {
-      CardPreviewPopup.open(title, image);
-    }},containerSelectors.cardTemplate);
-    cardSection.addItem(card.getView())
+    const card = new Card({
+      cardData,
+      handleImageClick: (imgData, imgCard) => {
+        CardPreviewPopup.open(imgData, imgCard);
+      }
+    },containerSelectors.cardTemplate);
+    cardSection.addItem(card.getView());
   }
 });
 
 
-// const cardsContainer = document.querySelector('.cards');
-// const cardLists = cardsContainer.querySelector('.cards__list');
-
-
-// function submitAddCard(e) {
-//   const title = cardTitleInput.value;
-//   const link = cardImageInput.value;
-//   const card = cardSection;
-//   cardLists.prepend(card);
-// }
-
-
-
-// Create instances of the classes
+// -------Create instances of the classes for others-------- //
 
 const userInfo = new UserInfo({
   nameSelector: "#profile__title-input",
@@ -76,7 +69,7 @@ const userInfo = new UserInfo({
 
 const profilePopup = new Popup(containerSelectors.profilePopup);
 const profileEditForm = new PopupWithForm({
-  popupSelector: containerSelectors.profilePopup, handleFormSubmit: (name, job) => {
+  popupSelector: containerSelectors.profilePopup, handleFormSubmit: () => {
     userInfo.getUserInfo({
       name: (profileTitle.textContent =profileTitleInput.value),
       job: (profileDescription.textContent = profileDescriptionInput.value),
@@ -92,27 +85,22 @@ function openProfileEditForm() {
  profilePopup.open();
 }
 
-function openCardAddForm() {
- cardAddPopup.open();
-}
 
+// ----------Click to Open Modal---------- //
+profileEditButton.addEventListener('click', openProfileEditForm);
+cardAddButton.addEventListener('click', () => {
+  cardAddPopup.open();
+});
 
 
 // ------Initialize all my instances------- //
 
 cardSection.renderItems(initialCards);
-
-
 CardPreviewPopup.setEventListeners();
 
 
-profileEditButton.addEventListener('click', openProfileEditForm);
-profilePopup.setEventListeners();
 profileEditForm._setEventListeners();
 
-
-cardAddButton.addEventListener('click', openCardAddForm);
-cardAddPopup.setEventListeners();
 cardAddForm._setEventListeners();
 
 // ------------Form Validation--------------- //
