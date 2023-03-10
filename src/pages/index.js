@@ -26,7 +26,8 @@ import PopupWithImage from "../components/PopupWithImage";
 const cardSection = new Section(
   {
     renderer: (cardData) => {
-      CreateCard(cardData);
+      const card = createCard(cardData);
+      cardSection.addItem(card.getView());
     }
   },containerSelectors.cardSection
 );
@@ -35,22 +36,21 @@ const cardSection = new Section(
 const CardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
 
 
-const cardAddPopup = new Popup(containerSelectors.cardAddModal);
-const cardAddForm = new PopupWithForm({
+const cardAddFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.cardAddModal,
   handleFormSubmit : (cardData) => {
-    CreateCard(cardData)
+   const newCard = createCard(cardData);
+   cardSection.addItem(newCard.getView());
   }
 });
 
-function CreateCard(cardData) {
+function createCard(cardData) {
   const cardElement = new Card({
     cardData,
     handleImageClick: (imgData, imgCard) => {
       CardPreviewPopup.open(imgData, imgCard);
     }
   },containerSelectors.cardTemplate);
-  cardSection.addItem(cardElement.getView());
 
   return cardElement;
 }
@@ -63,9 +63,7 @@ const userInfo = new UserInfo({
   jobSelector: "#profile__description-input",
 });
 
-
-const profilePopup = new Popup(containerSelectors.profilePopup);
-const profileEditForm = new PopupWithForm({
+const profileEditFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.profilePopup, handleFormSubmit: () => {
     userInfo.getUserInfo({
       name: (profileTitle.textContent =profileTitleInput.value),
@@ -79,14 +77,14 @@ function openProfileEditForm() {
     name: (profileTitleInput.value = profileTitle.textContent),
     job: (profileDescriptionInput.value =profileDescription.textContent),
   });
- profilePopup.open();
+  profileEditFormPopup.open();
 }
 
 
 // ----------Click to Open Modal---------- //
 profileEditButton.addEventListener('click', openProfileEditForm);
 cardAddButton.addEventListener('click', () => {
-  cardAddPopup.open();
+  cardAddFormPopup.open();
 });
 
 
@@ -94,8 +92,8 @@ cardAddButton.addEventListener('click', () => {
 
 cardSection.renderItems(initialCards);
 CardPreviewPopup.setEventListeners();
-profileEditForm._setEventListeners();
-cardAddForm._setEventListeners();
+profileEditFormPopup._setEventListeners();
+cardAddFormPopup._setEventListeners();
 
 // ------------Form Validation--------------- //
 
