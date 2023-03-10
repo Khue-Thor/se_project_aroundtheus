@@ -50,11 +50,12 @@ const cardAddForm = new PopupWithForm({
   handleFormSubmit : (cardData) => {
     const card = new Card({
       cardData,
-      handleImageClick: (imgData, imgCard) => {
-          CardPreviewPopup.open(imgData, imgCard);
+      handleImageClick: ({imgData, imgCard}) => {
+          CardPreviewPopup.open({imgData, imgCard});
       }
     },containerSelectors.cardTemplate);
-      cardSection.addItem(card.getView())
+    
+    cardSection.addItem(card.getView())
   }
 });
 
@@ -69,7 +70,7 @@ const userInfo = new UserInfo({
 
 const profilePopup = new Popup(containerSelectors.profilePopup);
 const profileEditForm = new PopupWithForm({
-  popupSelector: containerSelectors.profilePopup, handleFormSubmit: (name, job) => {
+  popupSelector: containerSelectors.profilePopup, handleFormSubmit: () => {
     userInfo.getUserInfo({
       name: (profileTitle.textContent =profileTitleInput.value),
       job: (profileDescription.textContent = profileDescriptionInput.value),

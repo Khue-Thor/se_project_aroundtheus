@@ -42,7 +42,7 @@ class Card {
   getView() {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector(".card__image");
-    const cardTitle = this._element.querySelector(".card__title")
+    const cardTitle = this._element.querySelector(".card__title");
     this._cardLikeButton = this._element.querySelector('.card__like-button');
     this._cardRemoveButton = this._element.querySelector('#card-remove-button');
 
