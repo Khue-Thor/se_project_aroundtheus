@@ -28,11 +28,15 @@ import PopupWithImage from "../components/PopupWithImage";
 const cardSection = new Section(
   {
     renderer: (cardData) => {
-      const cardEl = new Card({cardData, handleImageClick: (imgData, imgCard) => {
-        CardPreviewPopup.open(imgData, imgCard);
-      }},containerSelectors.cardTemplate);
+      const cardEl = new Card({
+        cardData,
+        handleImageClick: (imgData, imgCard) => {
+          CardPreviewPopup.open(imgData, imgCard);
+        }
+      },containerSelectors.cardTemplate);
+
       cardSection.addItem(cardEl.getView());
-    },
+    }
   },containerSelectors.cardSection
 );
 
@@ -44,10 +48,13 @@ const cardAddPopup = new Popup(containerSelectors.cardAddModal);
 const cardAddForm = new PopupWithForm({
   popupSelector: containerSelectors.cardAddModal,
   handleFormSubmit : (cardData) => {
-    const card = new Card({cardData, handleImageClick: (imgData, imgCard) => {
-      CardPreviewPopup.open(imgData, imgCard);
-    }},containerSelectors.cardTemplate);
-    cardSection.addItem(card.getView())
+    const card = new Card({
+      cardData,
+      handleImageClick: (imgData, imgCard) => {
+          CardPreviewPopup.open(imgData, imgCard);
+      }
+    },containerSelectors.cardTemplate);
+      cardSection.addItem(card.getView())
   }
 });
 
