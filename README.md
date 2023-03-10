@@ -25,27 +25,25 @@ Hi, my name is Khuephamy Phialoung. I am a Practicum student, this project is ca
 
  ------ My Git Page Link: https://khue-thor.github.io/se_project_aroundtheus/
 
-# 3rd commit : 
-  - moving the font.css to the fonts folder and create a new folder the the inter fonts.
- s
-# 4th commit : 
-  - delete the .page selector in normalize.css 
-
-# version.5 :
-  - change the opacity : 0.5;
-  - add the button 'type'
-  - put the profile__add-button to profile.css file.
-
-# fix scrolls horizontally:
-  - the .page__content has spicified the min and max width between 1280px - 320px.
-
-# make cards via JS and Fix the cards order:
-  - delete the HTML codes for the cards, it's tile and use Javacript to add cards
-  - The card Image will pop up from the bottom to the top in the initialCards.
-
-/*     Sprint 5       */
+/* ---------Sprint 5------------*/
 
  - we can add more cards.
  - open the card modal.
  - the like button is working now
  - We can delete card
+
+
+ /* --------Sprint 8----------- */
+ # work with Webpack
+  - Babel
+  - NPM
+  - Postcss
+  - Pakage.json
+
+# create new files:
+  - Popup.js
+  - popupWithForm.js
+  - PopupWithImage.js
+  - Section.js
+  - Userinfo.js
+
