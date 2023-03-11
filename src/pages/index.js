@@ -4,8 +4,6 @@ import
 { initialCards,
   containerSelectors,
   validationSettings,
-  profileTitle,
-  profileDescription,
   profileTitleInput,
   profileDescriptionInput,
   profileEditButton,
@@ -16,7 +14,7 @@ import Card from "../components/Card";
 import Section from "../components/Section";
 import UserInfo from "../components/UserInfo";
 import PopupWithForm from "../components/PopupWithForm";
-import FormValidatior from "../components/FormValidator";
+import FormValidator from "../components/FormValidator";
 import PopupWithImage from "../components/PopupWithImage";
 
 
@@ -59,30 +57,38 @@ function createCard(cardData) {
 // -------Create instances of the classes for others-------- //
 
 const userInfo = new UserInfo({
-  nameSelector: "#profile__title-input",
-  jobSelector: "#profile__description-input",
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__description",
 });
 
 const profileEditFormPopup = new PopupWithForm({
-  popupSelector: containerSelectors.profilePopup, handleFormSubmit: () => {
-    userInfo.getUserInfo({
-      name : profileTitleInput.value,
-      job : profileDescriptionInput.value,
-  });
+  popupSelector: containerSelectors.profilePopup, handleFormSubmit: (name, job) => {
+    userInfo.setUserInfo({name, job}); 
   }}
 );
 
-function openProfileEditForm() {
-  userInfo.setUserInfo({
-    name: (profileTitleInput.value = profileTitle.textContent),
-    job: (profileDescriptionInput.value = profileDescription.textContent),
-  });
-  profileEditFormPopup.open();
+// function openProfileEditForm() {
+//   userInfo.setUserInfo({ 
+
+//     name: (profileTitleInput.value = profileTitle.textContent), 
+
+//     job: (profileDescriptionInput.value =profileDescription.textContent)
+//   })
+//   profileEditFormPopup.open();
+// }
+
+const openProfileEditForm = ({name, job}) => {
+  profileTitleInput.value = name;
+  profileDescriptionInput.value = job;
 }
 
-
 // ----------Click to Open Modal---------- //
-profileEditButton.addEventListener('click', openProfileEditForm);
+profileEditButton.addEventListener('click', () => {
+  const { name, job} = userInfo.getUserInfo();
+  openProfileEditForm({name , job});
+  profileEditFormPopup.open();
+});
+
 cardAddButton.addEventListener('click', () => {
   cardAddFormPopup.open();
 });
@@ -100,8 +106,8 @@ cardAddFormPopup.setEventListeners();
 const editFormElement = document.querySelector('#profile-eidit-modal');
 const addFormElement = document.querySelector('#card-add-form');
 
-const editFormValidator = new FormValidatior(validationSettings, editFormElement);
-const addFormValidator = new FormValidatior(validationSettings, addFormElement);
+const editFormValidator = new FormValidator(validationSettings, editFormElement);
+const addFormValidator = new FormValidator(validationSettings, addFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();

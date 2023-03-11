@@ -44,6 +44,7 @@ export const containerSelectors = {
   cardAddModal: '#card-add-modal',
 }
 
+
 export const profileTitle = document.querySelector('.profile__title');
 export const profileDescription = document.querySelector('.profile__description');
 export const profileTitleInput = document.querySelector('#profile__title-input');
