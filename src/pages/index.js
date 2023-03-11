@@ -63,8 +63,8 @@ const userInfo = new UserInfo({
 
 const profileEditFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.profilePopup,
-  handleFormSubmit: ({name, job}) => {
-    userInfo.setUserInfo({name: name, job: job}); 
+  handleFormSubmit: (values) => {
+    userInfo.setUserInfo(values)
   }}
 );
 

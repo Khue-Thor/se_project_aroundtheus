@@ -12,7 +12,7 @@ export default class PopupWithForm extends Popup {
     const inputValues = {};
 
     this._formInputs.forEach((input) => {
-      inputValues[input.name] = input.value;
+    (inputValues[input.name] = input.value);
     });
     return inputValues;
   }
@@ -33,10 +33,11 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  setInputValues(data) {
-    this._formInputs.forEach((input) => {
-      input.value = data[input.name];
-    });
-  }
+  // setInputValues(data) {
+  //   this._formInputs.forEach((input) => {
+  //     // here you insert the `value` by the `name` of the input
+  //     input.value = data[input.name];
+  //   });
+  // }
 
 }
