@@ -63,30 +63,29 @@ const userInfo = new UserInfo({
 
 const profileEditFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.profilePopup,
-  handleFormSubmit: (values) => {
-    userInfo.setUserInfo(values)
+  handleFormSubmit: (data) => {
+    userInfo.setUserInfo({
+      name: data.title,
+      description: data.description
+    })
+    console.log(data)
   }}
 );
 
-// function openProfileEditForm() {
-//   userInfo.setUserInfo({ 
-
-//     name: (profileTitleInput.value = profileTitle.textContent), 
-
-//     job: (profileDescriptionInput.value =profileDescription.textContent)
-//   })
-//   profileEditFormPopup.open();
+// function submitEditProfile(name) {
+//   userInfo.setUserInfo({name});
+//   debugger
 // }
 
-const fillProfileForm = ({name, job}) => {
+const fillProfileForm = ({name, description}) => {
   profileTitleInput.value = name;
-  profileDescriptionInput.value = job;
+  profileDescriptionInput.value = description;
 }
 
 // ----------Click to Open Modal---------- //
 profileEditButton.addEventListener('click', () => {
-  const { name, job} = userInfo.getUserInfo();
-  fillProfileForm({name , job});
+  const { name, description} = userInfo.getUserInfo();
+  fillProfileForm({name , description});
   profileEditFormPopup.open();
 });
 

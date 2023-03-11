@@ -42,8 +42,7 @@ export const containerSelectors = {
   cardPreviewPopup: '#card-modal-image',
   profilePopup: '#profile-eidit-modal',
   cardAddModal: '#card-add-modal',
-}
-
+};
 
 export const profileTitle = document.querySelector('.profile__title');
 export const profileDescription = document.querySelector('.profile__description');
