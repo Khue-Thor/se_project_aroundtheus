@@ -62,8 +62,9 @@ const userInfo = new UserInfo({
 });
 
 const profileEditFormPopup = new PopupWithForm({
-  popupSelector: containerSelectors.profilePopup, handleFormSubmit: (name, job) => {
-    userInfo.setUserInfo({name, job}); 
+  popupSelector: containerSelectors.profilePopup,
+  handleFormSubmit: ({name, job}) => {
+    userInfo.setUserInfo({name: name, job: job}); 
   }}
 );
 
@@ -77,7 +78,7 @@ const profileEditFormPopup = new PopupWithForm({
 //   profileEditFormPopup.open();
 // }
 
-const openProfileEditForm = ({name, job}) => {
+const fillProfileForm = ({name, job}) => {
   profileTitleInput.value = name;
   profileDescriptionInput.value = job;
 }
@@ -85,7 +86,7 @@ const openProfileEditForm = ({name, job}) => {
 // ----------Click to Open Modal---------- //
 profileEditButton.addEventListener('click', () => {
   const { name, job} = userInfo.getUserInfo();
-  openProfileEditForm({name , job});
+  fillProfileForm({name , job});
   profileEditFormPopup.open();
 });
 
