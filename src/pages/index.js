@@ -64,11 +64,7 @@ const userInfo = new UserInfo({
 const profileEditFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.profilePopup,
   handleFormSubmit: (data) => {
-    userInfo.setUserInfo({
-      name: data.title,
-      description: data.description
-    })
-    console.log(data)
+    userInfo.setUserInfo(data)
   }}
 );
 
@@ -111,4 +107,3 @@ const addFormValidator = new FormValidator(validationSettings, addFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
-
