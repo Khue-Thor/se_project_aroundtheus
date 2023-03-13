@@ -59,6 +59,28 @@ export default class Api {
     return this._handleResponse(response);
   }
 
+  addCard = async ({title, link}) => {
+    const response = await fetch(`${this.baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        title,
+        link,
+      }),
+    });
+    return this._handleResponse(response);
+  }
 
-  
+  deleteCardById = async (id) => {
+    const response = await fetch(`${this._baseUrl}/cards/${id}`, {
+      method: "DELETE",
+      headers: this._headers,
+      body: JSON.stringify({
+        id,
+      }),
+    });
+    return this._handleResponse(response);
+  };
+
+
 }
