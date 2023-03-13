@@ -8,8 +8,11 @@ import
   profileDescriptionInput,
   profileEditButton,
   cardAddButton,
+  BASE_URL,
+  AUTH_TOKEN,
+  HEADERS
 } from "../utils/constants";
-
+import Api from "../components/Api";
 import Card from "../components/Card";
 import Section from "../components/Section";
 import UserInfo from "../components/UserInfo";
@@ -107,3 +110,25 @@ const addFormValidator = new FormValidator(validationSettings, addFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+
+
+
+
+
+function getInitialCards() {
+  return fetch("https://around.nomoreparties.co/v1/group-12/cards", {
+    headers: {
+      authorization: "02d7aa0c-331f-4762-a83f-c73224dbaeb3"
+    }
+  })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then((res) => {
+      console.log(res)
+    })
+}
+
+getInitialCards();

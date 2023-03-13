@@ -1,5 +1,15 @@
 export const ESC_KEYCODE = 27;
 
+
+export const BASE_URL = "https://around.nomoreparties.co/v1/groud-12";
+export const AUTH_TOKEN = "02d7aa0c-331f-4762-a83f-c73224dbaeb3";
+
+export const HEADERS = {
+  authorization: AUTH_TOKEN,
+  "Content-Type": "application/json",
+};
+
+
 export const initialCards = [
   {
     title: "Wetterhorn",
