@@ -5,10 +5,10 @@ export default class Api {
     this._headers = headers;
   }
 
-  _handleResponse(res) {
-    return res.ok 
-      ? res.json()
-      : Promise.reject(`Error: ${res.status} ${res.statusText}`);
+  _handleResponse(response) {
+    return response.ok 
+      ? response.json()
+      : Promise.reject(`Error: ${response.status} ${response.statusText}`);
   }
 
   _handleResponseError(err) {
@@ -16,4 +16,49 @@ export default class Api {
   }
 
   // GET: get App Data (cardList, userData)
+  getAppInfo() {
+    return Promise.all(this.getUserInfo(), this.getIntialCards())
+  }
+
+  // GET: User Info Profile
+  getUserInfo = async () => {
+    const response = await fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    });
+    return this._handleResponse(response)
+  }
+
+  getIntialCards = async () => {
+    const response = await fetch(`${this.baseUrl}/cards`, {
+      headers: this._headers,
+    });
+    return this._handleResponse(response);
+  }
+
+  // PATCH: Edit User Info
+  editUserInfo = async ({name, description}) => {
+    const response = await fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        description,
+      }),
+    });
+    return this._handleResponse(response);
+  }
+
+  setUserAvatar = async ({avatar}) => {
+    const response = await fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar,
+      }),
+    });
+    return this._handleResponse(response);
+  }
+
+
+  
 }

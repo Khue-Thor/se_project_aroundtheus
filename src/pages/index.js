@@ -112,23 +112,8 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 
-
-
-
-function getInitialCards() {
-  return fetch("https://around.nomoreparties.co/v1/group-12/cards", {
-    headers: {
-      authorization: "02d7aa0c-331f-4762-a83f-c73224dbaeb3"
-    }
-  })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .then((res) => {
-      console.log(res)
-    })
-}
-
-getInitialCards();
+const api = new Api({
+  baseUrl: BASE_URL,
+  authToken: AUTH_TOKEN,
+  headers: HEADERS
+});
