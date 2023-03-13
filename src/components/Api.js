@@ -82,5 +82,14 @@ export default class Api {
     return this._handleResponse(response);
   };
 
-
+  changeCardLikeStatus = async (cardId, like) => {
+    const response = await fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: like ? "PUT" : "DELETE",
+      headers: this._headers,
+      body: JSON.stringify({
+        like,
+      }),
+    });
+    return this._handleResponse(response);
+  };
 }
