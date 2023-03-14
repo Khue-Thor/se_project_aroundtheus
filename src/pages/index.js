@@ -119,10 +119,7 @@ api.getInitialCards().then(cards => {
   cardSection.renderItems(cards);
 })
 
-  // api.getInitialCards()
-  // .then(cards => {
-  //   console.log(cards)
-  // })
+
 
 cardPreviewPopup.setEventListeners();
 profileEditFormPopup.setEventListeners();
