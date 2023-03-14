@@ -1,6 +1,6 @@
 import "./index.css";
 // Import all the classes
-import 
+import initialCards,
 { containerSelectors,
   validationSettings,
   profileTitleInput,
@@ -56,15 +56,23 @@ const cardAddFormPopup = new PopupWithForm({
 });
 
 
-function createCard(cardData) {
-  const cardElement = new Card({
+function createCard(cardData, userId) {
+  const card = new Card({
     cardData,
+    userId,
     handleImageClick: () => {
       cardPreviewPopup.open(cardData);
+    },
+    handleDeleteClick: () => {
+      const id = card.getCardId();
+      api.deleteCardById(id)
+        .then(() => {
+          card.removeCard();
+        })
     }
   },containerSelectors.cardTemplate);
 
-  return cardElement.getView();
+  return card.getView();
 }
 
 
@@ -120,7 +128,6 @@ api.getInitialCards().then(cards => {
 })
 
 
-
 cardPreviewPopup.setEventListeners();
 profileEditFormPopup.setEventListeners();
 cardAddFormPopup.setEventListeners();
@@ -135,19 +142,4 @@ const addFormValidator = new FormValidator(validationSettings, addFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
-
-
-
-// function getUserInfo() {
-//   return fetch("https://around.nomoreparties.co/v1/group-12/cards", {
-//     headers: HEADERS
-//   })
-//   .then(res => res.json())
-//   .then((result) => {
-//     console.log(result);
-//   }); 
-// }
-
-// getUserInfo()
-
 

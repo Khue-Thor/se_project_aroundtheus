@@ -70,7 +70,7 @@ export default class Api {
       body: JSON.stringify({
         name,
         link
-      })
+      }),
     });
     return this._handleResponse(response);
   };
@@ -79,9 +79,6 @@ export default class Api {
     const response = await fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
-      body: JSON.stringify({
-        id,
-      }),
     });
     return this._handleResponse(response);
   };
