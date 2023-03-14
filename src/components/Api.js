@@ -1,5 +1,5 @@
 export default class Api {
-  constructor(baseUrl, authToken, headers ) {
+  constructor({ baseUrl, authToken, headers }) {
     this._baseUrl = baseUrl;
     this._authToken = authToken;
     this._headers = headers;
@@ -43,7 +43,7 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({
         name,
-        about,
+        about
       }),
     });
     return this._handleResponse(response);
@@ -61,26 +61,14 @@ export default class Api {
     return this._handleResponse(response);
   }
 
-     addCard = async ({ name, link }) => {
-    const response = await fetch(`${this._baseUrl}/cards`, {
-      method: "POST",
-      headers: this._headers,
-      body: JSON.stringify({
-        name,
-        link,
-      }),
-    });
-    return this._handleResponse(response);
-  };
-  
   addCard = async ({ name, link }) => {
     const response = await fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
         name,
-        link,
-      }),
+        link
+      })
     });
     return this._handleResponse(response);
   };

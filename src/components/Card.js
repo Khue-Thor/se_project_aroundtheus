@@ -4,10 +4,15 @@ class Card {
   constructor({cardData, handleImageClick}, cardSelector){
     this._link = cardData.link;
     this._title = cardData.title;
+    this._id = cardData.id;
     this._handleImageClick = handleImageClick;
 
     this._cardSelector = cardSelector;
     
+  }
+
+  getId() {
+    return this._id;
   }
 
   _setEventListeners() {

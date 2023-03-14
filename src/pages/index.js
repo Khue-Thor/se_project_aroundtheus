@@ -22,11 +22,11 @@ import PopupWithImage from "../components/PopupWithImage";
 
 // ---------------- Create API instances ------------------ //
 
-const api = new Api(
-  BASE_URL,
-  AUTH_TOKEN,
-  HEADERS
-  );
+const api = new Api({
+  baseUrl: BASE_URL,
+  authToken: AUTH_TOKEN,
+  headers: HEADERS,
+});
 
 
 // -------------Create instances for card-Section---------------- //
@@ -34,7 +34,7 @@ const cardSection = new Section(
   {
     renderer: (cardData) => {
       const card = createCard(cardData);
-      cardSection.addItem(card.getView());
+      cardSection.addItem(card);
     }
   },containerSelectors.cardSection
 );
@@ -45,24 +45,26 @@ const cardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup)
 
 const cardAddFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.cardAddModal,
-  handleFormSubmit : (cardData) => {
-  
-   const newCard = createCard(cardData);
-   cardSection.addItem(newCard.getView());
+  handleFormSubmit: (cardData) => {
+   api.addCard(cardData)
+      .then((cardData) => {
+        const newCard = createCard(cardData); 
+        cardSection.addItem(newCard); 
+      })
+      .catch((err) => console.log(err))
   }
 });
 
 
 function createCard(cardData) {
-   api.addCard(cardData).then(res => console.log(res));
   const cardElement = new Card({
     cardData,
-    handleImageClick: (imgData, imgCard) => {
-      cardPreviewPopup.open(imgData, imgCard);
+    handleImageClick: () => {
+      cardPreviewPopup.open(cardData);
     }
   },containerSelectors.cardTemplate);
 
-  return cardElement;
+  return cardElement.getView();
 }
 
 
@@ -118,6 +120,10 @@ api.getInitialCards()
     cardSection.renderItems(cards);
   })
 
+  // api.getInitialCards()
+  // .then(cards => {
+  //   console.log(cards)
+  // })
 
 cardPreviewPopup.setEventListeners();
 profileEditFormPopup.setEventListeners();
