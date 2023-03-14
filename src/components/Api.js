@@ -1,12 +1,12 @@
 export default class Api {
   constructor(baseUrl, authToken, headers ) {
     this._baseUrl = baseUrl;
-    this._authTokenn = authToken;
+    this._authToken = authToken;
     this._headers = headers;
   }
 
   _handleResponse(response) {
-    return response.ok 
+    return response.ok
       ? response.json()
       : Promise.reject(`Error: ${response.status} ${response.statusText}`);
   }
@@ -23,33 +23,35 @@ export default class Api {
   // GET: User Info Profile
   getUserInfo = async () => {
     const response = await fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
+      headers: this._headers
     });
     return this._handleResponse(response)
   }
 
-  getIntialCards = async () => {
-    const response = await fetch(`${this.baseUrl}/cards`, {
-      headers: this._headers,
+  getInitialCards = async () => {
+    const response = await fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers
     });
     return this._handleResponse(response);
-  }
+  };
+
 
   // PATCH: Edit User Info
-  editUserInfo = async ({name, description}) => {
+  editUserInfo = async ({name, about}) => {
     const response = await fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name,
-        description,
+        about,
       }),
     });
     return this._handleResponse(response);
+    
   }
 
   setUserAvatar = async ({avatar}) => {
-    const response = await fetch(`${this.baseUrl}/users/me/avatar`, {
+    const response = await fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -59,12 +61,12 @@ export default class Api {
     return this._handleResponse(response);
   }
 
-  addCard = async ({title, link}) => {
-    const response = await fetch(`${this.baseUrl}/cards`, {
+  addCard = async ({name, link}) => {
+    const response = await fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        title,
+        name,
         link,
       }),
     });

@@ -12,6 +12,7 @@ import
   AUTH_TOKEN,
   HEADERS
 } from "../utils/constants";
+
 import Api from "../components/Api";
 import Card from "../components/Card";
 import Section from "../components/Section";
@@ -20,8 +21,16 @@ import PopupWithForm from "../components/PopupWithForm";
 import FormValidator from "../components/FormValidator";
 import PopupWithImage from "../components/PopupWithImage";
 
+// ---------------- Create API instances ------------------ //
 
+const api = new Api(
+  BASE_URL,
+  AUTH_TOKEN,
+  HEADERS
+  );
 
+api.getInitialCards()
+  .then(res => console.log(res))
 
 // -------------Create instances for card-Section---------------- //
 const cardSection = new Section(
@@ -112,8 +121,17 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 
-const api = new Api({
-  baseUrl: BASE_URL,
-  authToken: AUTH_TOKEN,
-  headers: HEADERS
-});
+
+// function getUserInfo() {
+//   return fetch("https://around.nomoreparties.co/v1/group-12/cards", {
+//     headers: HEADERS
+//   })
+//   .then(res => res.json())
+//   .then((result) => {
+//     console.log(result);
+//   }); 
+// }
+
+// getUserInfo()
+
+
