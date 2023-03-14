@@ -1,8 +1,7 @@
 import "./index.css";
 // Import all the classes
 import 
-{ initialCards,
-  containerSelectors,
+{ containerSelectors,
   validationSettings,
   profileTitleInput,
   profileDescriptionInput,
@@ -29,8 +28,6 @@ const api = new Api(
   HEADERS
   );
 
-api.getInitialCards()
-  .then(res => console.log(res))
 
 // -------------Create instances for card-Section---------------- //
 const cardSection = new Section(
@@ -49,12 +46,15 @@ const cardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup)
 const cardAddFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.cardAddModal,
   handleFormSubmit : (cardData) => {
+  
    const newCard = createCard(cardData);
    cardSection.addItem(newCard.getView());
   }
 });
 
+
 function createCard(cardData) {
+   api.addCard(cardData).then(res => console.log(res));
   const cardElement = new Card({
     cardData,
     handleImageClick: (imgData, imgCard) => {
@@ -72,6 +72,15 @@ const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
 });
+
+api.getUserInfo()
+  .then(userData =>{
+    userInfo.setUserInfo({
+      name: userData.name,
+     description: userData.about
+    })
+  })
+
 
 const profileEditFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.profilePopup,
@@ -104,7 +113,12 @@ cardAddButton.addEventListener('click', () => {
 
 // ------Initialize all my instances------- //
 
-cardSection.renderItems(initialCards);
+api.getInitialCards()
+  .then(cards => {
+    cardSection.renderItems(cards);
+  })
+
+
 cardPreviewPopup.setEventListeners();
 profileEditFormPopup.setEventListeners();
 cardAddFormPopup.setEventListeners();

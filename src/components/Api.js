@@ -61,7 +61,7 @@ export default class Api {
     return this._handleResponse(response);
   }
 
-  addCard = async ({name, link}) => {
+     addCard = async ({ name, link }) => {
     const response = await fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -71,7 +71,19 @@ export default class Api {
       }),
     });
     return this._handleResponse(response);
-  }
+  };
+  
+  addCard = async ({ name, link }) => {
+    const response = await fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        link,
+      }),
+    });
+    return this._handleResponse(response);
+  };
 
   deleteCardById = async (id) => {
     const response = await fetch(`${this._baseUrl}/cards/${id}`, {
