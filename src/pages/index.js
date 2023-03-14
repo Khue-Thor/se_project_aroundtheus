@@ -115,10 +115,9 @@ cardAddButton.addEventListener('click', () => {
 
 // ------Initialize all my instances------- //
 
-api.getInitialCards()
-  .then(cards => {
-    cardSection.renderItems(cards);
-  })
+api.getInitialCards().then(cards => {
+  cardSection.renderItems(cards);
+})
 
   // api.getInitialCards()
   // .then(cards => {
