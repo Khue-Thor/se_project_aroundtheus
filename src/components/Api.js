@@ -17,7 +17,7 @@ export default class Api {
 
   // GET: get App Data (cardList, userData)
   getAppInfo() {
-    return Promise.all(this.getUserInfo(), this.getIntialCards())
+    return Promise.all(this.getUserInfo(), this.getInitialCards())
   }
 
   // GET: User Info Profile
@@ -79,6 +79,9 @@ export default class Api {
     const response = await fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
+      body: JSON.stringify({
+        id,
+      }),
     });
     return this._handleResponse(response);
   };

@@ -69,6 +69,13 @@ function createCard(cardData, userId) {
         .then(() => {
           card.removeCard();
         })
+    },
+    handleCardLikes: () => {
+      api.changeCardLikeStatus(card.getCardId(), !card.isLiked())
+        .then((response) => {
+          card.setLikes(response.likes);
+        })
+        .catch((err) => console.error(err))
     }
   },containerSelectors.cardTemplate);
 
@@ -131,6 +138,12 @@ api.getInitialCards().then(cards => {
 cardPreviewPopup.setEventListeners();
 profileEditFormPopup.setEventListeners();
 cardAddFormPopup.setEventListeners();
+
+
+
+
+
+
 
 // ------------Form Validation--------------- //
 
