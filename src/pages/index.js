@@ -92,7 +92,7 @@ api.getAppInfo()
       {
         items: cards,
         renderer: (cardData) => {
-          const card = createCard(cardData);
+          const card = createCard(cardData, userId);
           cardSection.addItem(card);
         },
     }, containerSelectors.cardSection);
@@ -197,6 +197,6 @@ addFormValidator.enableValidation();
 // ---things to do--- //
 
 // 1. need to make the delete card modal close Worker : Y
-// 2. bring the card titles back : N
-// 3. change the like button status: N
+// 2. bring the card titles back : Y
+// 3. change the like button status: Y
 // 4. edit profile avatar modal: N

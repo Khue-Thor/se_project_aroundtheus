@@ -6,7 +6,7 @@ class Card {
      cardSelector)
      {
     this._link = cardData.link;
-    this._title = cardData.title;
+    this._title = cardData.name;
     this._userId = userId;
     this._ownerId = cardData.owner._id;
     this._id = cardData._id;
@@ -63,8 +63,13 @@ class Card {
  
 
   _setEventListeners() {
-    this._element.querySelector(".card__like-button").addEventListener("click", () => this._handleCardLikes())
-    this._element.querySelector(".card__image").addEventListener("click", () => this._handlePreview());
+    this._element
+      .querySelector(".card__like-button")
+      .addEventListener("click", () => this._handleCardLikes())
+
+    this._element
+    .querySelector(".card__image")
+    .addEventListener("click", () => this._handlePreview());
 
     this._element
       .querySelector("#card-remove-button")
@@ -87,9 +92,9 @@ class Card {
     
     this._renderLikes();
     // remove the delete button from the API images
-    // if (this._userId !== this._ownerId) {
-    //   this._cardRemoveButton.remove();
-    // } 
+    if (this._userId !== this._ownerId) {
+      this._cardRemoveButton.remove();
+    } 
 
     return this._element;
 
