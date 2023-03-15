@@ -12,13 +12,11 @@ class Card {
     this._id = cardData._id;
     this._likes = cardData.likes;
     this._cardSelector = cardSelector;
+    
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleCardLikes = handleCardLikes;
-
-    
-    
-  }
+}
 
   getCardId = () => this._id;
 

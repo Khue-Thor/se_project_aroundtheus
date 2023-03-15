@@ -18,6 +18,14 @@ export default class PopupWithForm extends Popup {
     return inputValues;
   }
 
+  renderLoading(isLoading) {
+    if(isLoading) {
+      this._submitButton.textContent = "Saving...";
+    } else {
+      this._submitButton.textContent = "Saved";
+    }
+  }
+
   close() {
     this._modalForm.reset();
     super.close();

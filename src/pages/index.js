@@ -1,13 +1,14 @@
 import "./index.css";
 
 // Import all the classes
-import initialCards,
+import
 { containerSelectors,
   validationSettings,
   profileTitleInput,
   profileDescriptionInput,
   profileEditButton,
   cardAddButton,
+  editAvatarIcon,
   BASE_URL,
   AUTH_TOKEN,
   HEADERS
@@ -129,21 +130,23 @@ const comfirmationPopup = new PopupWithConfirmation(containerSelectors.cardDelet
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
+  avatarSelector: ".profile__avatar"
 });
 
-api.getUserInfo()
-  .then(userData =>{
-    userInfo.setUserInfo({
-      name: userData.name,
-     description: userData.about
-    })
-  })
 
 
 const profileEditFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.profilePopup,
   handleFormSubmit: (data) => {
-    userInfo.setUserInfo(data)
+    profileEditFormPopup.renderLoading(true);
+    api.editUserInfo(data)
+      .then(userData =>{
+        userInfo.setUserInfo({
+          name: userData.name,
+          description: userData.about,
+
+        })
+      })
   }}
 );
 
@@ -164,6 +167,28 @@ cardAddButton.addEventListener('click', () => {
   cardAddFormPopup.open();
 });
 
+editAvatarIcon.addEventListener('click', () => {
+  avatarFormModal.open()
+})
+
+// const avatarFormModal = new PopupWithForm({
+//   popupSelector: containerSelectors.editAvatarModal,
+//   handleFormSubmit: (avatar) => {
+//     avatarFormModal.renderLoading(true);
+//     api.setUserAvatar(avatar)
+//       .then((avatar) => {
+//         userInfo.setAvatar(avatar);
+//         avatarFormModal.close()
+//       })
+//       .catch((err) => {
+//         console.log(err)
+//       })
+//       .finally(() => {
+//         avatarFormModal.renderLoading(false)
+//       })
+//   }
+// })
+
 
 // ------Initialize all my instances------- //
 
@@ -176,7 +201,7 @@ cardPreviewPopup.setEventListeners();
 profileEditFormPopup.setEventListeners();
 cardAddFormPopup.setEventListeners();
 comfirmationPopup.setEventListeners();
-
+avatarFormModal.setEventListeners();
 
 
 
@@ -186,13 +211,15 @@ comfirmationPopup.setEventListeners();
 
 const editFormElement = document.querySelector('#profile-eidit-modal');
 const addFormElement = document.querySelector('#card-add-form');
+const editAvatarElement = document.querySelector('#edit-avatar-modal')
 
 const editFormValidator = new FormValidator(validationSettings, editFormElement);
 const addFormValidator = new FormValidator(validationSettings, addFormElement);
+const editAvatarFormValidator = new FormValidator(validationSettings, editAvatarElement)
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
-
+editAvatarFormValidator.enableValidation();
 
 // ---things to do--- //
 

@@ -74,7 +74,8 @@ export const containerSelectors = {
   cardPreviewPopup: '#card-modal-image',
   profilePopup: '#profile-eidit-modal',
   cardAddModal: '#card-add-modal',
-  cardDeleteModal: '#delet-comfirm-modal'
+  cardDeleteModal: '#delet-comfirm-modal',
+  editAvatarModal: '#edit-avatar-modal'
 };
 
 export const profileTitle = document.querySelector('.profile__title');
@@ -86,3 +87,5 @@ export const profileEditButton = document.querySelector('.profile__edit');
 export const cardAddButton = document.querySelector("#card__add-button");
 export const cardTitleInput = document.querySelector("#card__title-input");
 export const cardImageInput = document.querySelector("#card__link-input");
+
+export const editAvatarIcon = document.querySelector(".profile__avatar-edit");
