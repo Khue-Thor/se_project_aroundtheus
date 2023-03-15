@@ -1,7 +1,10 @@
 
 class Card {
 
-  constructor({cardData, userId, handleImageClick, handleDeleteClick, handleCardLikes}, cardSelector){
+  constructor(
+    {cardData, userId, handleImageClick, handleDeleteClick, handleCardLikes},
+     cardSelector)
+     {
     this._link = cardData.link;
     this._title = cardData.title;
     this._userId = userId;

@@ -34,6 +34,7 @@ const api = new Api({
 const cardSection = new Section(
   {
     renderer: (cardData) => {
+     
       const card = createCard(cardData);
       cardSection.addItem(card);
     }

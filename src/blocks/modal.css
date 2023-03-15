@@ -229,4 +229,10 @@
     max-width: calc(100% - 40px);
   }
 
+  /* .modal__container-confirm {
+    width: 282px;
+    top: 123px;
+    padding-bottom: 10px;
+  } */
+
 }
