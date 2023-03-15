@@ -146,13 +146,14 @@ const profileEditFormPopup = new PopupWithForm({
   handleFormSubmit: (data) => {
     api.editUserInfo(data)
       .then(userData =>{
-        userInfo.setUserInfo(userData);
+        userInfo.setUserInfo({
+          name: userData.name,
+          description: userData.about
+        });
       })
       .catch((err) => console.error(err))
   }}
 );
-
-
 
 
 const avatarFormModal = new PopupWithForm({
