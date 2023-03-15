@@ -13,12 +13,12 @@ export default class Api {
 
   _handleResponseError(err) {
     console.log(`Error processing request ${err}`);
-  }
+  };
 
   // GET: get App Data (cardList, userData)
   getAppInfo() {
     return Promise.all([this.getUserInfo(), this.getInitialCards()])
-  }
+  };
 
   // GET: User Info Profile
   getUserInfo = async () => {
@@ -26,7 +26,7 @@ export default class Api {
       headers: this._headers
     });
     return this._handleResponse(response)
-  }
+  };
 
   getInitialCards = async () => {
     const response = await fetch(`${this._baseUrl}/cards`, {
@@ -45,12 +45,11 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({
         name,
-        about
+        about,
       }),
     });
     return this._handleResponse(response);
-    
-  }
+  };
 
   setUserAvatar = async ({avatar}) => {
     const response = await fetch(`${this._baseUrl}/users/me/avatar`, {
@@ -61,7 +60,7 @@ export default class Api {
       }),
     });
     return this._handleResponse(response);
-  }
+  };
 
   addCard = async ({ name, link }) => {
     const response = await fetch(`${this._baseUrl}/cards`, {

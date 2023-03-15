@@ -136,27 +136,24 @@ const userInfo = new UserInfo({
   avatarSelector: ".profile__avatar"
 });
 
-
+const fillProfileForm = ({name, description}) => {
+  profileTitleInput.value = name;
+  profileDescriptionInput.value = description;
+}
 
 const profileEditFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.profilePopup,
   handleFormSubmit: (data) => {
     api.editUserInfo(data)
       .then(userData =>{
-        userInfo.setUserInfo({
-          name: userData.name,
-          description: userData.about,
-        });
+        userInfo.setUserInfo(userData);
       })
       .catch((err) => console.error(err))
   }}
 );
 
 
-const fillProfileForm = ({name, description}) => {
-  profileTitleInput.value = name;
-  profileDescriptionInput.value = description;
-}
+
 
 const avatarFormModal = new PopupWithForm({
   popupSelector: containerSelectors.editAvatarModal,
@@ -224,4 +221,5 @@ editAvatarFormValidator.enableValidation();
 // 1. need to make the delete card modal close Worker : Y
 // 2. bring the card titles back : Y
 // 3. change the like button status: Y
-// 4. edit profile avatar modal: N
+// 4. edit profile avatar modal: Y
+// 5. make edit profile form works: N
