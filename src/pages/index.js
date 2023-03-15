@@ -80,31 +80,6 @@ let cardSection;
 //   },containerSelectors.cardSection
 // );
 
-api.getAppInfo()
-  .then(([user, cards]) => {
-    userInfo.setUserInfo({
-      name: user.name,
-     description: user.about,
-    });
-
-    const avatar = user.avatar;
-    userInfo.setAvatar(avatar);
-    
-
-    const userId = user._id;
-    cardSection = new Section(
-      {
-        items: cards,
-        renderer: (cardData) => {
-          const card = createCard(cardData, userId);
-          cardSection.addItem(card);
-        },
-    }, containerSelectors.cardSection);
-    cardSection.renderItems();
-  })
-  .catch((err) => {
-    console.error(err);
-  });
 
 
 const cardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
@@ -169,6 +144,33 @@ const avatarFormModal = new PopupWithForm({
   }
 });
 
+
+api.getAppInfo()
+  .then(([user, cards]) => {
+    userInfo.setUserInfo({
+      name: user.name,
+      description: user.about,
+    });
+
+    const avatar = user.avatar;
+    userInfo.setAvatar(avatar);
+    
+
+    const userId = user._id;
+    cardSection = new Section(
+      {
+        items: cards,
+        renderer: (cardData) => {
+          const card = createCard(cardData, userId);
+          cardSection.addItem(card);
+        },
+    }, containerSelectors.cardSection);
+    cardSection.renderItems();
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 // ----------Click to Open Modal---------- //
 
 profileEditButton.addEventListener('click', () => {
@@ -193,9 +195,6 @@ profileEditFormPopup.setEventListeners();
 cardAddFormPopup.setEventListeners();
 comfirmationPopup.setEventListeners();
 avatarFormModal.setEventListeners();
-
-
-
 
 
 // ------------Form Validation--------------- //
