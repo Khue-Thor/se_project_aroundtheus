@@ -58,7 +58,6 @@ function createCard(cardData, userId) {
         api.deleteCardById(id)
         .then(() => {
           card.removeCard();
-          comfirmationPopup.close();
         })
         .catch((err) => console.error(err))
         .finally(() => comfirmationPopup.renderLoading(false));
