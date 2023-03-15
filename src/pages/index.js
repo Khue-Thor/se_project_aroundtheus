@@ -23,6 +23,16 @@ import FormValidator from "../components/FormValidator";
 import PopupWithImage from "../components/PopupWithImage";
 import PopupWithConfirmation from "../components/PopupWithConfirmation";
 
+// ----------- Form Validator Variables ------------- //
+
+const editFormElement = document.querySelector('#profile-eidit-modal');
+const addFormElement = document.querySelector('#card-add-form');
+const editAvatarElement = document.querySelector('#edit-avatar-modal')
+
+const editFormValidator = new FormValidator(validationSettings, editFormElement);
+const addFormValidator = new FormValidator(validationSettings, addFormElement);
+const editAvatarFormValidator = new FormValidator(validationSettings, editAvatarElement);
+
 // ---------------- Create API instances ------------------ //
 
 const api = new Api({
@@ -191,13 +201,6 @@ avatarFormModal.setEventListeners();
 
 // ------------Form Validation--------------- //
 
-const editFormElement = document.querySelector('#profile-eidit-modal');
-const addFormElement = document.querySelector('#card-add-form');
-const editAvatarElement = document.querySelector('#edit-avatar-modal')
-
-const editFormValidator = new FormValidator(validationSettings, editFormElement);
-const addFormValidator = new FormValidator(validationSettings, addFormElement);
-const editAvatarFormValidator = new FormValidator(validationSettings, editAvatarElement)
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
