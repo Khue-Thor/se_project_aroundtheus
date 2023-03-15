@@ -150,6 +150,8 @@ const profileEditFormPopup = new PopupWithForm({
           avatar: userData.avatar,
         });
       })
+      .catch((err) => console.error(err))
+      .finally(() => profileEditFormPopup.renderLoading(true))
   }}
 );
 
@@ -162,7 +164,7 @@ const fillProfileForm = ({name, description}) => {
 const avatarFormModal = new PopupWithForm({
   popupSelector: containerSelectors.editAvatarModal,
   handleFormSubmit: (avatar) => {
-    
+    avatarFormModal.renderLoading(true)
     api.setUserAvatar(avatar)
       .then((avatar) => {
         userInfo.setAvatar(avatar);        
@@ -170,11 +172,11 @@ const avatarFormModal = new PopupWithForm({
       .catch((err) => {
         console.log(err)
       })
-      // .finally(() => {
-      //   avatarFormModal.renderLoading(false)
-      // })
+      .finally(() => {
+        avatarFormModal.renderLoading(false)
+      })
   }
-})
+});
 
 // ----------Click to Open Modal---------- //
 profileEditButton.addEventListener('click', () => {
