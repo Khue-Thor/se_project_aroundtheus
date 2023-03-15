@@ -23,7 +23,7 @@ export default class Api {
   // GET: User Info Profile
   getUserInfo = async () => {
     const response = await fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers
+      headers: this._headers,
     });
     return this._handleResponse(response)
   };

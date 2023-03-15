@@ -23,6 +23,16 @@ import FormValidator from "../components/FormValidator";
 import PopupWithImage from "../components/PopupWithImage";
 import PopupWithConfirmation from "../components/PopupWithConfirmation";
 
+// ----------- Form Validator Variables ------------- //
+
+const editFormElement = document.querySelector('#profile-eidit-modal');
+const addFormElement = document.querySelector('#card-add-form');
+const editAvatarElement = document.querySelector('#edit-avatar-modal')
+
+const editFormValidator = new FormValidator(validationSettings, editFormElement);
+const addFormValidator = new FormValidator(validationSettings, addFormElement);
+const editAvatarFormValidator = new FormValidator(validationSettings, editAvatarElement);
+
 // ---------------- Create API instances ------------------ //
 
 const api = new Api({
@@ -70,21 +80,11 @@ function createCard(cardData, userId) {
 
 let cardSection;
 
-// const cardSection = new Section(
-//   {
-//     renderer: (cardData) => {
-     
-//       const card = createCard(cardData);
-//       cardSection.addItem(card);
-//     }
-//   },containerSelectors.cardSection
-// );
-
 api.getAppInfo()
   .then(([user, cards]) => {
     userInfo.setUserInfo({
       name: user.name,
-     description: user.about,
+      about : user.about,
     });
 
     const avatar = user.avatar;
@@ -106,7 +106,6 @@ api.getAppInfo()
     console.error(err);
   });
 
-
 const cardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
 
 
@@ -125,9 +124,7 @@ const cardAddFormPopup = new PopupWithForm({
 const comfirmationPopup = new PopupWithConfirmation(containerSelectors.cardDeleteModal)
 
 
-
 // -------Create instances of the classes for others-------- //
-
 
 
 const userInfo = new UserInfo({
@@ -136,9 +133,9 @@ const userInfo = new UserInfo({
   avatarSelector: ".profile__avatar"
 });
 
-const fillProfileForm = ({name, description}) => {
+const fillProfileForm = ({name, about}) => {
   profileTitleInput.value = name;
-  profileDescriptionInput.value = description;
+  profileDescriptionInput.value = about;
 }
 
 const profileEditFormPopup = new PopupWithForm({
@@ -148,7 +145,8 @@ const profileEditFormPopup = new PopupWithForm({
       .then(userData =>{
         userInfo.setUserInfo({
           name: userData.name,
-          description: userData.about
+          about: userData.about,
+          avatar: userData.avatar
         });
       })
       .catch((err) => console.error(err))
@@ -169,10 +167,12 @@ const avatarFormModal = new PopupWithForm({
   }
 });
 
+
 // ----------Click to Open Modal---------- //
+
 profileEditButton.addEventListener('click', () => {
-  const { name, description} = userInfo.getUserInfo();
-  fillProfileForm({name , description});
+  const { name, about} = userInfo.getUserInfo();
+  fillProfileForm({name , about});
   profileEditFormPopup.open();
 });
 
@@ -188,10 +188,6 @@ editAvatarIcon.addEventListener('click', () => {
 
 // ------Initialize all my instances------- //
 
-// api.getInitialCards().then(cards => {
-//   cardSection.renderItems(cards);
-// })
-
 
 cardPreviewPopup.setEventListeners();
 profileEditFormPopup.setEventListeners();
@@ -200,27 +196,9 @@ comfirmationPopup.setEventListeners();
 avatarFormModal.setEventListeners();
 
 
-
-
-
 // ------------Form Validation--------------- //
 
-const editFormElement = document.querySelector('#profile-eidit-modal');
-const addFormElement = document.querySelector('#card-add-form');
-const editAvatarElement = document.querySelector('#edit-avatar-modal')
-
-const editFormValidator = new FormValidator(validationSettings, editFormElement);
-const addFormValidator = new FormValidator(validationSettings, addFormElement);
-const editAvatarFormValidator = new FormValidator(validationSettings, editAvatarElement)
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 editAvatarFormValidator.enableValidation();
-
-// ---things to do--- //
-
-// 1. need to make the delete card modal close Worker : Y
-// 2. bring the card titles back : Y
-// 3. change the like button status: Y
-// 4. edit profile avatar modal: Y
-// 5. make edit profile form works: N
