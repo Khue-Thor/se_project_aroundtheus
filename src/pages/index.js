@@ -123,9 +123,7 @@ const cardAddFormPopup = new PopupWithForm({
 const comfirmationPopup = new PopupWithConfirmation(containerSelectors.cardDeleteModal)
 
 
-
 // -------Create instances of the classes for others-------- //
-
 
 
 const userInfo = new UserInfo({
@@ -168,8 +166,6 @@ const avatarFormModal = new PopupWithForm({
 });
 
 
-
-
 // ----------Click to Open Modal---------- //
 
 profileEditButton.addEventListener('click', () => {
@@ -205,10 +201,5 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 editAvatarFormValidator.enableValidation();
 
-// ---things to do--- //
 
-// 1. need to make the delete card modal close Worker : Y
-// 2. bring the card titles back : Y
-// 3. change the like button status: Y
-// 4. edit profile avatar modal: Y
-// 5. make edit profile form works: N
+// 1. make edit profile form works: N
