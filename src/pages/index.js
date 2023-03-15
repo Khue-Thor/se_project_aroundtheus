@@ -171,23 +171,23 @@ editAvatarIcon.addEventListener('click', () => {
   avatarFormModal.open()
 })
 
-// const avatarFormModal = new PopupWithForm({
-//   popupSelector: containerSelectors.editAvatarModal,
-//   handleFormSubmit: (avatar) => {
-//     avatarFormModal.renderLoading(true);
-//     api.setUserAvatar(avatar)
-//       .then((avatar) => {
-//         userInfo.setAvatar(avatar);
-//         avatarFormModal.close()
-//       })
-//       .catch((err) => {
-//         console.log(err)
-//       })
-//       .finally(() => {
-//         avatarFormModal.renderLoading(false)
-//       })
-//   }
-// })
+const avatarFormModal = new PopupWithForm({
+  popupSelector: containerSelectors.editAvatarModal,
+  handleFormSubmit: (avatar) => {
+    avatarFormModal.renderLoading(true);
+    api.setUserAvatar(avatar)
+      .then((avatar) => {
+        userInfo.setAvatar(avatar);
+        avatarFormModal.close()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        avatarFormModal.renderLoading(false)
+      })
+  }
+})
 
 
 // ------Initialize all my instances------- //
