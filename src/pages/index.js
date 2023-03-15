@@ -141,17 +141,14 @@ const userInfo = new UserInfo({
 const profileEditFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.profilePopup,
   handleFormSubmit: (data) => {
-    profileEditFormPopup.renderLoading(true);
     api.editUserInfo(data)
       .then(userData =>{
         userInfo.setUserInfo({
           name: userData.name,
           description: userData.about,
-          avatar: userData.avatar,
         });
       })
       .catch((err) => console.error(err))
-      .finally(() => profileEditFormPopup.renderLoading(true))
   }}
 );
 
@@ -164,16 +161,12 @@ const fillProfileForm = ({name, description}) => {
 const avatarFormModal = new PopupWithForm({
   popupSelector: containerSelectors.editAvatarModal,
   handleFormSubmit: (avatar) => {
-    avatarFormModal.renderLoading(true)
     api.setUserAvatar(avatar)
       .then((avatar) => {
         userInfo.setAvatar(avatar);        
       })
       .catch((err) => {
         console.log(err)
-      })
-      .finally(() => {
-        avatarFormModal.renderLoading(false)
       })
   }
 });
