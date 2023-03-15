@@ -1,4 +1,5 @@
 import "./index.css";
+
 // Import all the classes
 import initialCards,
 { containerSelectors,
@@ -31,38 +32,10 @@ const api = new Api({
 
 
 // -------------Create instances for card-Section---------------- //
-const cardSection = new Section(
-  {
-    renderer: (cardData) => {
-     
-      const card = createCard(cardData);
-      cardSection.addItem(card);
-    }
-  },containerSelectors.cardSection
-);
-
-
-const cardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
-
-
-const cardAddFormPopup = new PopupWithForm({
-  popupSelector: containerSelectors.cardAddModal,
-  handleFormSubmit: (cardData) => {
-   api.addCard(cardData)
-      .then((cardData) => {
-        const newCard = createCard(cardData); 
-        cardSection.addItem(newCard); 
-      })
-      .catch((err) => console.log(err))
-  }
-});
-
-const comfirmationPopup = new PopupWithConfirmation(containerSelectors.cardDeleteModal)
-
 function createCard(cardData, userId) {
   const card = new Card({
-    cardData,
-    userId,
+    cardData: cardData,
+    userId: userId,
     handleImageClick: () => {
       cardPreviewPopup.open(cardData);
     },
@@ -87,12 +60,63 @@ function createCard(cardData, userId) {
         .then((response) => {
           card.setLikes(response.likes);
         })
-        .catch((err) => console.error(err))
-    }
+        .catch((err) => console.error(err));
+    },
   },containerSelectors.cardTemplate);
 
   return card.getView();
 }
+
+let cardSection;
+
+// const cardSection = new Section(
+//   {
+//     renderer: (cardData) => {
+     
+//       const card = createCard(cardData);
+//       cardSection.addItem(card);
+//     }
+//   },containerSelectors.cardSection
+// );
+
+api.getAppInfo()
+  .then(([user, cards]) => {
+    userInfo.setUserInfo({
+      name: user.name,
+     description: user.about,
+    });
+    
+
+    const userId = user._id;
+    cardSection = new Section(
+      {
+        items: cards,
+        renderer: (cardData) => {
+          const card = createCard(cardData);
+          cardSection.addItem(card);
+        },
+    }, containerSelectors.cardSection);
+    cardSection.renderItems()
+  })
+
+
+const cardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
+
+
+const cardAddFormPopup = new PopupWithForm({
+  popupSelector: containerSelectors.cardAddModal,
+  handleFormSubmit: (cardData) => {
+   api.addCard(cardData)
+      .then((cardData) => {
+        const newCard = createCard(cardData); 
+        cardSection.addItem(newCard); 
+      })
+      .catch((err) => console.log(err))
+  }
+});
+
+const comfirmationPopup = new PopupWithConfirmation(containerSelectors.cardDeleteModal)
+
 
 
 // -------Create instances of the classes for others-------- //
@@ -140,9 +164,9 @@ cardAddButton.addEventListener('click', () => {
 
 // ------Initialize all my instances------- //
 
-api.getInitialCards().then(cards => {
-  cardSection.renderItems(cards);
-})
+// api.getInitialCards().then(cards => {
+//   cardSection.renderItems(cards);
+// })
 
 
 cardPreviewPopup.setEventListeners();
@@ -166,3 +190,10 @@ const addFormValidator = new FormValidator(validationSettings, addFormElement);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
+
+// ---things to do--- //
+
+// 1. need to make the delete card modal close Worker
+// 2. bring the card titles back
+// 3. change the like button status
+// 4. edit profile avatar modal

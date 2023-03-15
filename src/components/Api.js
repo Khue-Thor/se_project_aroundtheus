@@ -17,7 +17,7 @@ export default class Api {
 
   // GET: get App Data (cardList, userData)
   getAppInfo() {
-    return Promise.all(this.getUserInfo(), this.getInitialCards())
+    return Promise.all([this.getUserInfo(), this.getInitialCards()])
   }
 
   // GET: User Info Profile

@@ -170,8 +170,9 @@
 }
 
 .modal__delete-comfirm {
-  width: 358px;
+  max-width: 358px;
   margin: 0 36px 36px 36px;
+  border-radius: 2px;
 }
 
 @media screen and (max-width: 820px) {
@@ -229,10 +230,15 @@
     max-width: calc(100% - 40px);
   }
 
-  /* .modal__container-confirm {
+  .modal__container-confirm {
     width: 282px;
-    top: 123px;
-    padding-bottom: 10px;
-  } */
+   
+    
+  }
+
+  .modal__delete-comfirm {
+   margin: 0;
+   max-width: 200px;
+  }
 
 }
