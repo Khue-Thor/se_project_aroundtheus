@@ -12,9 +12,10 @@
       </header>
 
       <main class="content">
+        
         <section class="profile">
-          <img src="<%=require('./images/Avatar.png')%>" alt="avatar" class="profile__avatar">
-          
+          <img src="" alt="avatar" class="profile__avatar">
+          <button class="profile__avatar-edit" type="button" aria-label="edit-avatar"></button>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button class="profile__edit" type="button">
@@ -33,10 +34,11 @@
             <template id="card__template">
               <li class="card">
                 <button class="card__remove-button" id="card-remove-button" type="button"></button>
-                <img src="#" alt="" class="card__image" id="card-image">
+                <img src="#" alt="#" class="card__image" id="#">
                 <div class="card__description">
                   <h2 class="card__title" id="card-title"></h2>
                   <button class="card__like-button" type="button" id="like-button"></button>
+                  <p class="card__like-count"></p>
                 </div>
               </li>
             </template>
@@ -95,7 +97,7 @@
                 class="modal__form-input"
                 type="text"
                 placeholder="Title"
-                name="title"
+                name="name"
                 id="card__title-input"
                 required
                 minlength="1"
@@ -127,14 +129,49 @@
 
       <div class="modal" id="card-modal-image">
 				<div class="modal__container-card">
-          <button class="modal__close" id="card-image-close"></button>
+          <button type="button" class="modal__close" id="card-image-close"></button>
 					<img class="modal__image-card" id="modal-image-card" src="#" alt=""/>
 					<p class="modal__caption-card" id="card-modal-caption"></p>
 				</div>
 			</div>
+
+      <div class="modal" id="delet-comfirm-modal">
+				<div class="modal__container-confirm">
+          <h2 class="modal__heading modal__confirm-header">Are you sure?</h2>
+          <button type="button" class="modal__close"></button>
+					<button type="submit" class="modal__form-save modal__delete-comfirm modal__button">Yes</button>
+				</div>
+			</div>
+
+
+      <div class="modal" id="edit-avatar-modal">
+        <div class="modal__container">
+          <button class="modal__close" id="card-Add-Modal__close_button"></button>
+          <form class="modal__form" novalidate>
+            <h2 class="modal__heading">Change profile picture</h2>
+
+            <fieldset class="modal__form-fieldset">
+              <input 
+                class="modal__form-input"
+                type="url"
+                placeholder="Image link"
+                id="avatar__link-input"
+                name="avatar"
+                required
+              >
+              
+            </fieldset>
+            <span class="modal__error" id="avatar__link-input-error"></span>
+            <fieldset class="modal__form-fieldset">
+              <button type="submit" class="modal__form-save modal__button">Save</button>
+            </fieldset>
+
+          </form>
+        </div>
+      </div>
       
       <footer class="footer">
-        <p class="footer__copyright">© 2022 Around the U.S.</p>
+        <p class="footer__copyright">© 2023 Around the U.S.</p>
       </footer>
     </div>
   </body>
