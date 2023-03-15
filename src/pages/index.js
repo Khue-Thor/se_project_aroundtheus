@@ -96,8 +96,11 @@ api.getAppInfo()
           cardSection.addItem(card);
         },
     }, containerSelectors.cardSection);
-    cardSection.renderItems()
+    cardSection.renderItems();
   })
+  .catch((err) => {
+    console.error(err);
+  });
 
 
 const cardPreviewPopup = new PopupWithImage(containerSelectors.cardPreviewPopup);
@@ -172,7 +175,7 @@ cardAddButton.addEventListener('click', () => {
 cardPreviewPopup.setEventListeners();
 profileEditFormPopup.setEventListeners();
 cardAddFormPopup.setEventListeners();
-
+comfirmationPopup.setEventListeners();
 
 
 
@@ -193,7 +196,7 @@ addFormValidator.enableValidation();
 
 // ---things to do--- //
 
-// 1. need to make the delete card modal close Worker
-// 2. bring the card titles back
-// 3. change the like button status
-// 4. edit profile avatar modal
+// 1. need to make the delete card modal close Worker : Y
+// 2. bring the card titles back : N
+// 3. change the like button status: N
+// 4. edit profile avatar modal: N

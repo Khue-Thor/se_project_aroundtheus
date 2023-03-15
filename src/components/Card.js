@@ -11,19 +11,24 @@ class Card {
     this._ownerId = cardData.owner._id;
     this._id = cardData._id;
     this._likes = cardData.likes;
+    this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleCardLikes = handleCardLikes;
 
-    this._cardSelector = cardSelector;
+    
     
   }
 
   getCardId = () => this._id;
 
+  _getTemplate() {
+    const cardTemplate =  document
+      .querySelector(this._cardSelector)
+      .content.querySelector('.card')
+      .cloneNode(true)
 
-  _handleLikeButton = () => {
-    this._cardLikeButton.classList.toggle("card__like-button_toggle");
+    return cardTemplate;
   }
 
   removeCard = () => {
@@ -55,14 +60,7 @@ class Card {
     }
   }
 
-  _getTemplate() {
-    const cardTemplate =  document
-      .querySelector(this._cardSelector)
-      .content.querySelector('.card')
-      .cloneNode(true)
-
-      return cardTemplate;
-  }
+ 
 
   _setEventListeners() {
     this._element.querySelector(".card__like-button").addEventListener("click", () => this._handleCardLikes())
@@ -77,7 +75,7 @@ class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
     this._cardImage = this._element.querySelector(".card__image");
-    this._cardTitle = this._element.querySelector("#card-title");
+    this._cardTitle = this._element.querySelector(".card__title");
     this._cardLikeButton = this._element.querySelector('.card__like-button');
     this._cardRemoveButton = this._element.querySelector('#card-remove-button');
     this._cardLikeCount = this._element.querySelector(".card__like-count");
