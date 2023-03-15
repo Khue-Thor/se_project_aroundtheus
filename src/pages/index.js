@@ -83,7 +83,7 @@ api.getAppInfo()
   .then(([user, cards]) => {
     userInfo.setUserInfo({
       name: user.name,
-      description: user.about,
+      about : user.about,
     });
 
     const avatar = user.avatar;
@@ -132,9 +132,9 @@ const userInfo = new UserInfo({
   avatarSelector: ".profile__avatar"
 });
 
-const fillProfileForm = ({name, description}) => {
+const fillProfileForm = ({name, about}) => {
   profileTitleInput.value = name;
-  profileDescriptionInput.value = description;
+  profileDescriptionInput.value = about;
 }
 
 const profileEditFormPopup = new PopupWithForm({
@@ -144,7 +144,8 @@ const profileEditFormPopup = new PopupWithForm({
       .then(userData =>{
         userInfo.setUserInfo({
           name: userData.name,
-          description: userData.about
+          about: userData.about,
+          avatar: userData.avatar
         });
       })
       .catch((err) => console.error(err))
@@ -169,8 +170,8 @@ const avatarFormModal = new PopupWithForm({
 // ----------Click to Open Modal---------- //
 
 profileEditButton.addEventListener('click', () => {
-  const { name, description} = userInfo.getUserInfo();
-  fillProfileForm({name , description});
+  const { name, about} = userInfo.getUserInfo();
+  fillProfileForm({name , about});
   profileEditFormPopup.open();
 });
 
