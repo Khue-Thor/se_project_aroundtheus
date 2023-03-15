@@ -14,7 +14,7 @@
       <main class="content">
         
         <section class="profile">
-          <img src="<%=require('./images/Avatar.png')%>" alt="avatar" class="profile__avatar">
+          <img src="" alt="avatar" class="profile__avatar">
           <button class="profile__avatar-edit" type="button" aria-label="edit-avatar"></button>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
@@ -147,7 +147,7 @@
       <div class="modal" id="edit-avatar-modal">
         <div class="modal__container">
           <button class="modal__close" id="card-Add-Modal__close_button"></button>
-          <form class="modal__form" id="card-add-form">
+          <form class="modal__form" novalidate>
             <h2 class="modal__heading">Change profile picture</h2>
 
             <fieldset class="modal__form-fieldset">
@@ -155,15 +155,15 @@
                 class="modal__form-input"
                 type="url"
                 placeholder="Image link"
-                id="card__link-input"
-                name="link"
+                id="avatar__link-input"
+                name="avatar"
                 required
               >
               
             </fieldset>
-            <span class="modal__error" id="card__link-input-error"></span>
+            <span class="modal__error" id="avatar__link-input-error"></span>
             <fieldset class="modal__form-fieldset">
-              <button type="submit" class="modal__form-save modal__button modal__button_disabled" id="card-add-submit">Save</button>
+              <button type="submit" class="modal__form-save modal__button">Save</button>
             </fieldset>
 
           </form>

@@ -86,6 +86,9 @@ api.getAppInfo()
       name: user.name,
      description: user.about,
     });
+
+    const avatar = user.avatar;
+    userInfo.setAvatar(avatar);
     
 
     const userId = user._id;
@@ -144,8 +147,8 @@ const profileEditFormPopup = new PopupWithForm({
         userInfo.setUserInfo({
           name: userData.name,
           description: userData.about,
-
-        })
+          avatar: userData.avatar,
+        });
       })
   }}
 );
@@ -155,6 +158,23 @@ const fillProfileForm = ({name, description}) => {
   profileTitleInput.value = name;
   profileDescriptionInput.value = description;
 }
+
+const avatarFormModal = new PopupWithForm({
+  popupSelector: containerSelectors.editAvatarModal,
+  handleFormSubmit: (avatar) => {
+    
+    api.setUserAvatar(avatar)
+      .then((avatar) => {
+        userInfo.setAvatar(avatar);        
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      // .finally(() => {
+      //   avatarFormModal.renderLoading(false)
+      // })
+  }
+})
 
 // ----------Click to Open Modal---------- //
 profileEditButton.addEventListener('click', () => {
@@ -171,23 +191,6 @@ editAvatarIcon.addEventListener('click', () => {
   avatarFormModal.open()
 })
 
-const avatarFormModal = new PopupWithForm({
-  popupSelector: containerSelectors.editAvatarModal,
-  handleFormSubmit: (avatar) => {
-    avatarFormModal.renderLoading(true);
-    api.setUserAvatar(avatar)
-      .then((avatar) => {
-        userInfo.setAvatar(avatar);
-        avatarFormModal.close()
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      .finally(() => {
-        avatarFormModal.renderLoading(false)
-      })
-  }
-})
 
 
 // ------Initialize all my instances------- //
