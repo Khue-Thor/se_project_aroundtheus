@@ -69,18 +69,20 @@ function createCard(cardData, userId) {
       const id = card.getCardId();
       comfirmationPopup.open();
       comfirmationPopup.setSubmitAction(() => {
-        comfirmationPopup.renderLoading(true)
-      })
-      api.deleteCardById(id)
+        comfirmationPopup.renderLoading(true);
+        api.deleteCardById(id)
         .then(() => {
           card.removeCard();
           comfirmationPopup.close();
         })
         .catch((err) => console.error(err))
         .finally(() => comfirmationPopup.renderLoading(false));
+      });
+      
     },
     handleCardLikes: () => {
-      api.changeCardLikeStatus(card.getCardId(), !card.isLiked())
+      api
+      .changeCardLikeStatus(card.getCardId(), !card.isLiked())
         .then((response) => {
           card.setLikes(response.likes);
         })
@@ -117,10 +119,6 @@ const profileEditFormPopup = new PopupWithForm({
   }}
 );
 
-// function submitEditProfile(name) {
-//   userInfo.setUserInfo({name});
-//   debugger
-// }
 
 const fillProfileForm = ({name, description}) => {
   profileTitleInput.value = name;
