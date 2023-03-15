@@ -202,6 +202,3 @@ avatarFormModal.setEventListeners();
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 editAvatarFormValidator.enableValidation();
-
-
-// 1. make edit profile form works: N
