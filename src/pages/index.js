@@ -170,6 +170,7 @@ const avatarFormModal = new PopupWithForm({
 });
 
 // ----------Click to Open Modal---------- //
+
 profileEditButton.addEventListener('click', () => {
   const { name, description} = userInfo.getUserInfo();
   fillProfileForm({name , description});
@@ -184,13 +185,7 @@ editAvatarIcon.addEventListener('click', () => {
   avatarFormModal.open()
 })
 
-
-
 // ------Initialize all my instances------- //
-
-// api.getInitialCards().then(cards => {
-//   cardSection.renderItems(cards);
-// })
 
 
 cardPreviewPopup.setEventListeners();
