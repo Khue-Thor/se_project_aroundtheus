@@ -19,6 +19,7 @@ import UserInfo from "../components/UserInfo";
 import PopupWithForm from "../components/PopupWithForm";
 import FormValidator from "../components/FormValidator";
 import PopupWithImage from "../components/PopupWithImage";
+import PopupWithConfirmation from "../components/PopupWithConfirmation";
 
 // ---------------- Create API instances ------------------ //
 
@@ -55,6 +56,7 @@ const cardAddFormPopup = new PopupWithForm({
   }
 });
 
+const comfirmationPopup = new PopupWithConfirmation(containerSelectors.cardDeleteModal)
 
 function createCard(cardData, userId) {
   const card = new Card({
@@ -65,10 +67,17 @@ function createCard(cardData, userId) {
     },
     handleDeleteClick: () => {
       const id = card.getCardId();
+      comfirmationPopup.open();
+      comfirmationPopup.setSubmitAction(() => {
+        comfirmationPopup.renderLoading(true)
+      })
       api.deleteCardById(id)
         .then(() => {
           card.removeCard();
+          comfirmationPopup.close();
         })
+        .catch((err) => console.error(err))
+        .finally(() => comfirmationPopup.renderLoading(false));
     },
     handleCardLikes: () => {
       api.changeCardLikeStatus(card.getCardId(), !card.isLiked())
@@ -84,6 +93,8 @@ function createCard(cardData, userId) {
 
 
 // -------Create instances of the classes for others-------- //
+
+
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",

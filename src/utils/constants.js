@@ -74,6 +74,7 @@ export const containerSelectors = {
   cardPreviewPopup: '#card-modal-image',
   profilePopup: '#profile-eidit-modal',
   cardAddModal: '#card-add-modal',
+  cardDeleteModal: '#delet-comfirm-modal'
 };
 
 export const profileTitle = document.querySelector('.profile__title');
