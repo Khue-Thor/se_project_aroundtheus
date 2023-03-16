@@ -121,7 +121,7 @@ const cardPreviewPopup = new PopupWithImage(
 const cardAddFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.cardAddModal,
   handleFormSubmit: (cardData) => {
-    cardAddFormPopup.renderLoadings(true);
+    cardAddFormPopup.renderLoading(true);
     api
       .addCard(cardData)
       .then((cardData) => {
@@ -130,7 +130,7 @@ const cardAddFormPopup = new PopupWithForm({
         cardAddFormPopup.close();
       })
       .catch((err) => console.log(err))
-      .finally(() => cardAddFormPopup.renderLoadings(false));
+      .finally(() => cardAddFormPopup.renderLoading(false));
   },
 });
 
@@ -154,7 +154,7 @@ const fillProfileForm = ({ name, about }) => {
 const profileEditFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.profilePopup,
   handleFormSubmit: (data) => {
-    profileEditFormPopup.renderLoadings(true)
+    profileEditFormPopup.renderLoading(true)
     api
       .editUserInfo(data)
       .then((userData) => {
@@ -166,21 +166,24 @@ const profileEditFormPopup = new PopupWithForm({
         profileEditFormPopup.close()
       })
       .catch((err) => console.error(err))
-      .finally(() => profileEditFormPopup.renderLoadings(false));
+      .finally(() => profileEditFormPopup.renderLoading(false));
   },
 });
 
 const avatarFormModal = new PopupWithForm({
   popupSelector: containerSelectors.editAvatarModal,
   handleFormSubmit: (avatar) => {
+    avatarFormModal.renderLoading(true);
     api
       .setUserAvatar(avatar)
       .then((avatar) => {
         userInfo.setAvatar(avatar);
+        avatarFormModal.close()
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => avatarFormModal.renderLoading(false));
   },
 });
 
