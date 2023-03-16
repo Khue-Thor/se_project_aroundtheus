@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around-The-US</title>
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header">
-        <img src="<%=require('./images/logo.svg')%>" alt="logo" class="logo">
+        <img src="<%=require('./images/logo.svg')%>" alt="logo" class="logo" />
       </header>
 
       <main class="content">
-        
         <section class="profile">
-          <img src="#" alt="avatar" class="profile__avatar">
-          <button class="profile__avatar-edit" type="button" aria-label="edit-avatar"></button>
+          <img src="#" alt="avatar" class="profile__avatar" />
+          <button
+            class="profile__avatar-edit"
+            type="button"
+            aria-label="edit-avatar"
+          ></button>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button class="profile__edit" type="button">
-              <img src="<%=require('./images/edit.svg')%>" alt="edit-button" class="profile__edit-button">
+              <img
+                src="<%=require('./images/edit.svg')%>"
+                alt="edit-button"
+                class="profile__edit-button"
+              />
             </button>
             <p class="profile__description">Explorer</p>
           </div>
 
-          <button class="profile__add-button" id="card__add-button" type="button">
-          </button>
-          
+          <button
+            class="profile__add-button"
+            id="card__add-button"
+            type="button"
+          ></button>
         </section>
 
         <section class="cards">
           <ul class="cards__list">
             <template id="card__template">
               <li class="card">
-                <button class="card__remove-button" id="card-remove-button" type="button"></button>
-                <img src="#" alt="#" class="card__image" id="#">
+                <button
+                  class="card__remove-button"
+                  id="card-remove-button"
+                  type="button"
+                ></button>
+                <img src="#" alt="#" class="card__image" id="#" />
                 <div class="card__description">
                   <h2 class="card__title" id="card-title"></h2>
-                  <button class="card__like-button" type="button" id="like-button"></button>
+                  <button
+                    class="card__like-button"
+                    type="button"
+                    id="like-button"
+                  ></button>
                   <p class="card__like-count"></p>
                 </div>
               </li>
@@ -52,7 +69,7 @@
           <form class="modal__form">
             <h2 class="modal__heading">Edit Profile</h2>
             <fieldset class="modal__form-fieldset">
-              <input 
+              <input
                 class="modal__form-input"
                 type="text"
                 name="name"
@@ -61,12 +78,11 @@
                 required
                 minlength="2"
                 maxlength="40"
-              >
-             
+              />
             </fieldset>
             <span class="modal__error" id="profile__title-input-error"></span>
             <fieldset class="modal__form-fieldset">
-              <input 
+              <input
                 class="modal__form-input"
                 type="text"
                 name="about"
@@ -75,25 +91,35 @@
                 required
                 minlength="2"
                 maxlength="200"
-              >
-               
+              />
             </fieldset>
-            <span class="modal__error" id="profile__description-input-error"></span>
+            <span
+              class="modal__error"
+              id="profile__description-input-error"
+            ></span>
             <fieldset class="modal__form-fieldset">
-              <button type="submit" class="modal__form-save modal__button" id="card-modal-submit">Save</button>
+              <button
+                type="submit"
+                class="modal__form-save modal__button"
+                id="card-modal-submit"
+              >
+                Save
+              </button>
             </fieldset>
-
           </form>
         </div>
       </div>
 
       <div class="modal" id="card-add-modal">
         <div class="modal__container">
-          <button class="modal__close" id="card-Add-Modal__close_button"></button>
+          <button
+            class="modal__close"
+            id="card-Add-Modal__close_button"
+          ></button>
           <form class="modal__form" id="card-add-form">
             <h2 class="modal__heading">New Place</h2>
             <fieldset class="modal__form-fieldset">
-              <input 
+              <input
                 class="modal__form-input"
                 type="text"
                 placeholder="Title"
@@ -102,47 +128,55 @@
                 required
                 minlength="1"
                 maxlength="30"
-              >
-             
+              />
             </fieldset>
             <span class="modal__error" id="card__title-input-error"></span>
 
             <fieldset class="modal__form-fieldset">
-              <input 
+              <input
                 class="modal__form-input"
                 type="url"
                 placeholder="Image link"
                 id="card__link-input"
                 name="link"
                 required
-              >
-              
+              />
             </fieldset>
             <span class="modal__error" id="card__link-input-error"></span>
             <fieldset class="modal__form-fieldset">
-              <button type="submit" class="modal__form-save modal__button modal__button_disabled" id="card-add-submit">Create</button>
+              <button
+                type="submit"
+                class="modal__form-save modal__button modal__button_disabled"
+                id="card-add-submit"
+              >
+                Create
+              </button>
             </fieldset>
-
           </form>
         </div>
       </div>
 
       <div class="modal" id="card-modal-image">
-				<div class="modal__container-card">
-          <button type="button" class="modal__close" id="card-image-close"></button>
-					<img class="modal__image-card" id="modal-image-card" src="#" alt=""/>
-					<p class="modal__caption-card" id="card-modal-caption"></p>
-				</div>
-			</div>
+        <div class="modal__container-card">
+          <button
+            type="button"
+            class="modal__close"
+            id="card-image-close"
+          ></button>
+          <img class="modal__image-card" id="modal-image-card" src="#" alt="" />
+          <p class="modal__caption-card" id="card-modal-caption"></p>
+        </div>
+      </div>
 
       <div class="modal" id="delet-comfirm-modal">
-				<div class="modal__container-confirm">
+        <div class="modal__container-confirm">
           <h2 class="modal__heading modal__confirm-header">Are you sure?</h2>
           <button type="button" class="modal__close"></button>
-					<button type="submit" class="modal__form-save  modal__button">Yes</button>
-				</div>
-			</div>
-
+          <button type="submit" class="modal__form-save modal__button">
+            Yes
+          </button>
+        </div>
+      </div>
 
       <div class="modal" id="edit-avatar-modal">
         <div class="modal__container">
@@ -151,25 +185,25 @@
             <h2 class="modal__heading">Change profile picture</h2>
 
             <fieldset class="modal__form-fieldset">
-              <input 
+              <input
                 class="modal__form-input"
                 type="url"
                 placeholder="Image link"
                 id="avatar__link-input"
                 name="avatar"
                 required
-              >
-              
+              />
             </fieldset>
             <span class="modal__error" id="avatar__link-input-error"></span>
             <fieldset class="modal__form-fieldset">
-              <button type="submit" class="modal__form-save modal__button">Save</button>
+              <button type="submit" class="modal__form-save modal__button">
+                Save
+              </button>
             </fieldset>
-
           </form>
         </div>
       </div>
-      
+
       <footer class="footer">
         <p class="footer__copyright">© 2023 Around the U.S.</p>
       </footer>
