@@ -2,8 +2,7 @@ import "./index.css";
 
 import FormValidatior from "../components/FormValidator";
 import Card from "../components/Card";
-import {openModal, closeModal} from "../components/utils";
-
+import { openModal, closeModal } from "../components/utils";
 
 const initialCards = [
   {
@@ -34,37 +33,33 @@ const initialCards = [
 /* -----------------*/
 /*     Variables    */
 /* -----------------*/
-const profileEditButton = document.querySelector('.profile__edit');
-const profileEditModal = document.querySelector('#profile-eidit-modal');
-const profileTitle = document.querySelector('.profile__title');
-const profileDescription = document.querySelector('.profile__description');
-const profileTitleInput = document.querySelector('#profile__title-input');
-const profileDescriptionInput = document.querySelector('#profile__description-input');
-const profileForm = document.querySelector('.modal__form');
+const profileEditButton = document.querySelector(".profile__edit");
+const profileEditModal = document.querySelector("#profile-eidit-modal");
+const profileTitle = document.querySelector(".profile__title");
+const profileDescription = document.querySelector(".profile__description");
+const profileTitleInput = document.querySelector("#profile__title-input");
+const profileDescriptionInput = document.querySelector(
+  "#profile__description-input"
+);
+const profileForm = document.querySelector(".modal__form");
 
-
-const cardsContainer = document.querySelector('.cards');
-const cardLists = cardsContainer.querySelector('.cards__list');
-
+const cardsContainer = document.querySelector(".cards");
+const cardLists = cardsContainer.querySelector(".cards__list");
 
 const cardAddButton = document.querySelector("#card__add-button");
 const cardAddModal = document.querySelector("#card-add-modal");
 
-
 const cardAddForm = document.querySelector("#card-add-form");
-
 
 const cardTitleInput = document.querySelector("#card__title-input");
 const cardImageInput = document.querySelector("#card__link-input");
 
-const closeButtons = document.querySelectorAll('.modal__close');
+const closeButtons = document.querySelectorAll(".modal__close");
 
-const cardModalImage = document.querySelector('#card-modal-image');
+const cardModalImage = document.querySelector("#card-modal-image");
 /* -----------------*/
 /*    Functions     */
 /* -----------------*/
-
-
 
 function openProfileEditForm() {
   profileTitleInput.value = profileTitle.textContent;
@@ -79,7 +74,6 @@ function handleProfileEditSubmit(e) {
   closeModal(profileEditModal);
 }
 
-
 // sprint5 function //
 
 function renderCard(cardData) {
@@ -91,7 +85,7 @@ function handleAddCardSubmit(e) {
   e.preventDefault();
   const title = e.target.title.value;
   const link = e.target.link.value;
-  renderCard({title, link}, cardLists);
+  renderCard({ title, link }, cardLists);
   closeModal(cardAddModal);
   cardTitleInput.value = "";
   cardImageInput.value = "";
@@ -111,8 +105,6 @@ function handleCardClick() {
 //   e.target.closest(".card").remove();
 // }
 
-
-
 // function getCardView(cardData) {
 //   const cardElement = cardTemplate.cloneNode(true);
 //   const cardImage = cardElement.querySelector('.card__image');
@@ -129,7 +121,7 @@ function handleCardClick() {
 //   cardImage.addEventListener("click", () => {
 //     handleCardImageModal(cardData);
 //   });
-  
+
 //   cardImage.alt = cardData.title;
 //   cardImage.src = cardData.link;
 //   cardTitle.textContent = cardData.title;
@@ -146,42 +138,36 @@ function handleCardClick() {
 /* ---------------- */
 /*  Event Listener  */
 /* -----------------*/
-profileEditButton.addEventListener('click', openProfileEditForm);
+profileEditButton.addEventListener("click", openProfileEditForm);
 
-profileForm.addEventListener('submit', handleProfileEditSubmit);
-
+profileForm.addEventListener("submit", handleProfileEditSubmit);
 
 // click to open AddCardModal
 cardAddButton.addEventListener("click", () => {
   openModal(cardAddModal);
 });
 
-
 // click to add card
-cardAddForm.addEventListener("submit", handleAddCardSubmit)
-
+cardAddForm.addEventListener("submit", handleAddCardSubmit);
 
 closeButtons.forEach((button) => {
-  // find the closest popup 
-  const popup = button.closest('.modal');
+  // find the closest popup
+  const popup = button.closest(".modal");
   // set the listener
-  button.addEventListener('click', () => closeModal(popup));
-  
+  button.addEventListener("click", () => closeModal(popup));
 });
-
 
 /* ------------------ */
 /*  Loop to add cards */
 /* ------------------ */
 
 initialCards.forEach((cardData) => {
- renderCard(cardData, cardsContainer);
+  renderCard(cardData, cardsContainer);
 });
 
 /* -------------------------------------- */
 /*               Validation               */
 /* -------------VVVVVVVVVV--------------- */
-
 
 const validationSettings = {
   formSelector: ".modal__form",
@@ -189,17 +175,19 @@ const validationSettings = {
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible"
+  errorClass: "modal__error_visible",
 };
 
+const editFormElement = profileEditModal.querySelector(".modal__form");
+const addFormElement = cardAddModal.querySelector(".modal__form");
 
-const editFormElement = profileEditModal.querySelector('.modal__form');
-const addFormElement = cardAddModal.querySelector('.modal__form');
-
-const editFormValidator = new FormValidatior(validationSettings, editFormElement);
+const editFormValidator = new FormValidatior(
+  validationSettings,
+  editFormElement
+);
 const addFormValidator = new FormValidatior(validationSettings, addFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-export {handleCardClick};
+export { handleCardClick };

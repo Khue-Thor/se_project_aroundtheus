@@ -1,7 +1,6 @@
 export default class Api {
-  constructor({ baseUrl, authToken, headers }) {
+  constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
-    this._authToken = authToken;
     this._headers = headers;
   }
 
@@ -13,33 +12,30 @@ export default class Api {
 
   _handleResponseError(err) {
     console.log(`Error processing request ${err}`);
-  };
+  }
 
   // GET: get App Data (cardList, userData)
   getAppInfo() {
-    return Promise.all([this.getUserInfo(), this.getInitialCards()])
-  };
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
+  }
 
   // GET: User Info Profile
   getUserInfo = async () => {
     const response = await fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     });
-    return this._handleResponse(response)
+    return this._handleResponse(response);
   };
 
   getInitialCards = async () => {
     const response = await fetch(`${this._baseUrl}/cards`, {
-      headers: {
-        authorization: this._authToken
-      }
+      headers: this._headers
     });
     return this._handleResponse(response);
   };
 
-
   // PATCH: Edit User Info
-  editUserInfo = async ({name, about}) => {
+  editUserInfo = async ({ name, about }) => {
     const response = await fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -51,7 +47,7 @@ export default class Api {
     return this._handleResponse(response);
   };
 
-  setUserAvatar = async ({avatar}) => {
+  setUserAvatar = async ({ avatar }) => {
     const response = await fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
@@ -68,7 +64,7 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({
         name,
-        link
+        link,
       }),
     });
     return this._handleResponse(response);

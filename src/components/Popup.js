@@ -1,4 +1,4 @@
-import {ESC_KEYCODE} from "../utils/constants"
+import { ESC_KEYCODE } from "../utils/constants";
 
 export default class Popup {
   constructor(popupSelector) {
@@ -7,8 +7,7 @@ export default class Popup {
   }
 
   _handleEscClose(evt) {
-    evt.preventDefault();
-    if(evt.which === ESC_KEYCODE) {
+    if (evt.which === ESC_KEYCODE) {
       this.close();
     }
   }
@@ -24,13 +23,13 @@ export default class Popup {
   }
 
   setEventListeners() {
-    this._popupElement.addEventListener('mousedown', (evt) => {
-     if (evt.target.classList.contains('modal_opened') || evt.target.classList.contains('modal__close')) {
-      this.close();
-     }
+    this._popupElement.addEventListener("mousedown", (evt) => {
+      if (
+        evt.target.classList.contains("modal_opened") ||
+        evt.target.classList.contains("modal__close")
+      ) {
+        this.close();
+      }
     });
-
-   
   }
-
 }

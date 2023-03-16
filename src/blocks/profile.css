@@ -1,14 +1,11 @@
-
-
 .profile {
   box-sizing: border-box;
- 
+
   max-width: 800px;
   display: grid;
   grid-template-columns: 120px 30px 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas:
-  "avatar . info info add";
+  grid-template-areas: "avatar . info info add";
   align-items: center;
   margin: 0;
   padding: 40px 0 51px 0;
@@ -20,19 +17,18 @@
   grid-area: avatar;
   border-radius: 50%;
   margin: 0;
-  
 }
 
 .profile__info {
   max-width: 415px;
-  color: #FFFFFF;
+  color: #ffffff;
   display: grid;
   grid-template-columns: 373px 18px 24px;
   grid-template-rows: 1fr 33px 22px;
-  grid-template-areas: 
-  "title . ."
-  "title . edit"
-  "description description description";
+  grid-template-areas:
+    "title . ."
+    "title . edit"
+    "description description description";
   grid-area: info;
   margin: 0;
   padding: 0;
@@ -43,7 +39,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 42px;
@@ -53,14 +49,12 @@
   grid-area: title;
 }
 
-
-
 .profile__edit {
   max-width: 24px;
   max-height: 24px;
   background: transparent;
   grid-area: edit;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   display: flex;
   cursor: pointer;
   box-sizing: border-box;
@@ -74,13 +68,12 @@
   opacity: 0.6;
 }
 
-
 .profile__description {
   max-width: 415px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -91,12 +84,12 @@
 }
 
 .profile__add-button {
-  background: transparent url('../images/add-button.svg') center no-repeat;
+  background: transparent url("../images/add-button.svg") center no-repeat;
   width: 150px;
   height: 50px;
   grid-area: add;
   margin-left: auto;
-  border: 2px solid #FFFFFF;
+  border: 2px solid #ffffff;
   border-radius: 2px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
@@ -116,7 +109,7 @@
   opacity: 0;
   transition: ease-in-out 0.3s;
   background-color: rgba(0, 0, 0, 0.825);
-  background: url('../images/edit.svg') center no-repeat;
+  background: url("../images/edit.svg") center no-repeat;
   background-size: 20%;
 }
 
@@ -125,44 +118,41 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1279px ) {
+@media screen and (max-width: 1279px) {
   .profile {
     padding: 40px 19px 61px 19px;
   }
-
-  
 }
 
-
-@media screen and (max-width: 820px ) {
+@media screen and (max-width: 820px) {
   .profile {
     max-width: 282px;
     padding: 42px 0 0 0;
     margin: 0 auto;
     margin-bottom: 36px;
-    grid-template-columns:  1fr 1fr 1fr 1fr;
-    grid-template-rows: 127.5px  26.25px 50px 36px 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 127.5px 26.25px 50px 36px 50px;
     grid-template-areas:
-    ". avatar avatar ."
-    ". . . ."
-    "info info info info"
-    ". . . ."
-    "add add add add";
+      ". avatar avatar ."
+      ". . . ."
+      "info info info info"
+      ". . . ."
+      "add add add add";
   }
 
   .profile__avatar {
     max-width: 127.5px;
     max-height: 127.5px;
   }
-  
+
   .profile__info {
     max-width: 282px;
     grid-template-columns: 43px 1fr 10px 18px 15px;
     grid-template-rows: 1fr 32px auto;
-    grid-template-areas: 
-    ". title . . ."
-    ". title . edit ."
-    "description description description description description";
+    grid-template-areas:
+      ". title . . ."
+      ". title . edit ."
+      "description description description description description";
   }
 
   .profile__title {
@@ -179,9 +169,8 @@
   .profile__edit-button {
     max-width: 7.5px;
     max-height: 7.49px;
-    
   }
-  
+
   .profile__description {
     font-size: 14px;
     text-align: center;
@@ -197,6 +186,4 @@
     top: 144px;
     left: calc(50% - 68px);
   }
-  
-
 }
