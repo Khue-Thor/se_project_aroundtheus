@@ -163,6 +163,7 @@ const profileEditFormPopup = new PopupWithForm({
           about: userData.about,
           avatar: userData.avatar,
         });
+        profileEditFormPopup.close()
       })
       .catch((err) => console.error(err))
       .finally(() => profileEditFormPopup.renderLoadings(false));
