@@ -123,13 +123,15 @@ const cardPreviewPopup = new PopupWithImage(
 const cardAddFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.cardAddModal,
   handleFormSubmit: (cardData) => {
+    cardAddFormPopup.renderLoading(true);
     api
       .addCard(cardData)
       .then((cardData) => {
-        const newCard = createCard(cardData);
+        const newCard = createCard(cardData, cardData.owner._id);
         cardSection.addItem(newCard);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => cardAddFormPopup.renderLoading(false));
   },
 });
 
