@@ -13,7 +13,7 @@ import {
   HEADERS,
 } from "../utils/constants";
 
-import Api from "../components/Api";
+import Api from "../utils/Api";
 import Card from "../components/Card";
 import Section from "../components/Section";
 import UserInfo from "../components/UserInfo"
