@@ -1,7 +1,6 @@
 export default class Api {
-  constructor({ baseUrl, authToken, headers }) {
+  constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
-    this._authToken = authToken;
     this._headers = headers;
   }
 
@@ -30,9 +29,7 @@ export default class Api {
 
   getInitialCards = async () => {
     const response = await fetch(`${this._baseUrl}/cards`, {
-      headers: {
-        authorization: this._authToken,
-      },
+      headers: this._headers
     });
     return this._handleResponse(response);
   };

@@ -10,16 +10,15 @@ import {
   cardAddButton,
   editAvatarIcon,
   BASE_URL,
-  AUTH_TOKEN,
   HEADERS,
 } from "../utils/constants";
 
 import Api from "../components/Api";
 import Card from "../components/Card";
 import Section from "../components/Section";
-import UserInfo from "../components/UserInfo";
-import PopupWithForm from "../components/PopupWithForm";
+import UserInfo from "../components/UserInfo"
 import FormValidator from "../components/FormValidator";
+import PopupWithForm from "../components/PopupWithForm";
 import PopupWithImage from "../components/PopupWithImage";
 import PopupWithConfirmation from "../components/PopupWithConfirmation";
 
@@ -43,7 +42,6 @@ const editAvatarFormValidator = new FormValidator(
 
 const api = new Api({
   baseUrl: BASE_URL,
-  authToken: AUTH_TOKEN,
   headers: HEADERS,
 });
 
@@ -123,15 +121,16 @@ const cardPreviewPopup = new PopupWithImage(
 const cardAddFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.cardAddModal,
   handleFormSubmit: (cardData) => {
-    cardAddFormPopup.renderLoading(true);
+    cardAddFormPopup.renderLoadings(true);
     api
       .addCard(cardData)
       .then((cardData) => {
         const newCard = createCard(cardData, cardData.owner._id);
         cardSection.addItem(newCard);
+        cardAddFormPopup.close();
       })
       .catch((err) => console.log(err))
-      .finally(() => cardAddFormPopup.renderLoading(false));
+      .finally(() => cardAddFormPopup.renderLoadings(false));
   },
 });
 
@@ -155,6 +154,7 @@ const fillProfileForm = ({ name, about }) => {
 const profileEditFormPopup = new PopupWithForm({
   popupSelector: containerSelectors.profilePopup,
   handleFormSubmit: (data) => {
+    profileEditFormPopup.renderLoadings(true)
     api
       .editUserInfo(data)
       .then((userData) => {
@@ -164,7 +164,8 @@ const profileEditFormPopup = new PopupWithForm({
           avatar: userData.avatar,
         });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => profileEditFormPopup.renderLoadings(false));
   },
 });
 
@@ -200,10 +201,10 @@ editAvatarIcon.addEventListener("click", () => {
 
 // ------Initialize all my instances------- //
 
-cardPreviewPopup.setEventListeners();
-profileEditFormPopup.setEventListeners();
 cardAddFormPopup.setEventListeners();
 comfirmationPopup.setEventListeners();
+cardPreviewPopup.setEventListeners();
+profileEditFormPopup.setEventListeners();
 avatarFormModal.setEventListeners();
 
 // ------------Form Validation--------------- //

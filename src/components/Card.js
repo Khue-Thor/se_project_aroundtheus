@@ -83,9 +83,10 @@ class Card {
     this._cardTitle.textContent = this._title;
 
     this._renderLikes();
+
     // remove the delete button from the API images
     if (this._userId !== this._ownerId) {
-      this._cardRemoveButton.remove();
+      return this._cardRemoveButton.remove();
     }
 
     return this._element;
