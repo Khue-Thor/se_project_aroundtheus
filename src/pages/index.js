@@ -84,7 +84,7 @@ function createCard(cardData, userId) {
   return card.getView();
 }
 
-let cardSection;
+let cardList;
 
 api
   .getAppInfo()
@@ -98,17 +98,18 @@ api
     userInfo.setAvatar(avatar);
 
     const userId = user._id;
-    cardSection = new Section(
+    cardList = new Section(
       {
         items: cards,
         renderer: (cardData) => {
           const card = createCard(cardData, userId);
-          cardSection.addItem(card);
+          cardList.addItem(card);
+          
         },
       },
       containerSelectors.cardSection
     );
-    cardSection.renderItems();
+    cardList.renderItems();
   })
   .catch((err) => {
     console.error(err);

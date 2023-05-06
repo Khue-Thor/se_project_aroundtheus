@@ -10,7 +10,7 @@ class Card {
     this._id = cardData._id;
     this._likes = cardData.likes;
     this._cardSelector = cardSelector;
-
+    
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleCardLikes = handleCardLikes;
@@ -58,7 +58,7 @@ class Card {
   _setEventListeners() {
     this._element
       .querySelector(".card__like-button")
-      .addEventListener("click", () => this._handleCardLikes());
+      .addEventListener("click", () => this._handleCardLikes() );
 
     this._element
       .querySelector(".card__image")

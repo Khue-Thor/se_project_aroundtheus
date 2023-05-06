@@ -29,7 +29,7 @@ export default class Api {
 
   getInitialCards = async () => {
     const response = await fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers
+      headers: this._headers,
     });
     return this._handleResponse(response);
   };
